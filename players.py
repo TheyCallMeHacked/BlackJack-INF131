@@ -19,4 +19,11 @@ def initPlayers(n, v = 0):
 # By default the players' scores are initialized as null by "initPlayers" function
 def firstTurn(players):
     for p in players:
-        
+        s = deck.valueCard(deck.drawCard())
+        s = 11 if s == 1 else s
+        t = deck.valueCard(deck.drawCard())
+        t = 11 if s > 10 and t == 1 else s
+        p.score[0] = s + t
+
+def winner(scores):
+      
