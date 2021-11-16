@@ -1,4 +1,4 @@
-#A2 - Players and scores
+# A2 - Players and scores
 
 import deck
 
@@ -17,7 +17,7 @@ def initPlayers(n, v = 0):
     return players
 
 # By default the players' scores are initialized as null by "initPlayers" function
-def firstTurn(players):
+def firstTurn(players, deck):
     for p in players:
         s = deck.valueCard(deck.drawCard())
         s = 11 if s == 1 else s
@@ -25,5 +25,15 @@ def firstTurn(players):
         t = 11 if s > 10 and t == 1 else s
         p.score[0] = s + t
 
-def winner(scores):
-      
+def winner(players):
+    maxScore = 0
+    maxPlayer = ""
+    for n, p in players.items():
+        if 21 >= p.score[-1] > maxScore:
+            maxScore = p.score[-1]
+            maxPlayer = n
+    
+    return maxScore, maxPlayer
+
+
+
