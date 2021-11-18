@@ -28,6 +28,6 @@ def initStack(n):
         d += deck()
     return random.shuffle(d)
 
-def drawCard(p,x=1):
-    return [p.pop[i] for i in range(x)]
+def drawCard(deck,x=1):
+    return [deck.pop[i] for i in range(x)]
     

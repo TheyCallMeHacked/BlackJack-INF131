@@ -10,18 +10,20 @@ def initPlayers(n, v = 0):
     for i in range(n):
         name = input("Name of player " + str(i + 1) + ':')
         players[name] = {
-            'score' : [],
-            'wins' : 0,
-            'balance' : v
+            'score'        : [],
+            'wins'         : 0,
+            'balance'      : v,
+            'stillPlaying' : True,
+            'bet'          : [0]
         }
     return players
 
 # By default the players' scores are initialized as null by "initPlayers" function
-def firstTurn(players, deck):
+def firstTurn(players, d):
     for p in players:
-        s = deck.valueCard(deck.drawCard())
+        s = deck.valueCard(deck.drawCard(d))
         s = 11 if s == 1 else s
-        t = deck.valueCard(deck.drawCard())
+        t = deck.valueCard(deck.drawCard(d))
         t = 11 if s > 10 and t == 1 else s
         p.score[0] = s + t
 
