@@ -32,6 +32,11 @@ def initStack(n):
     random.shuffle(d)
     return d
 
-def drawCard(deck,x=1):
-    return [deck.pop(i) for i in range(x)]
+def drawCard(deck_, n, x=1):
+    drawn = []
+    for i in range(x):
+        if len(deck_) == 0:
+            deck_ = initStack(n)
+        drawn.append(deck_.pop(0))
+    return drawn
     

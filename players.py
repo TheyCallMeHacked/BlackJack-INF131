@@ -5,7 +5,7 @@ import deck as d
 # The players'scores are already given by initPlayer function so defining a "initScores" \
 # function is not necessary 
 
-def initPlayers(n, bal = 0):
+def initPlayers(n, bal = 100):
     players = {}
     for i in range(n):
         name = input("Name of player " + str(i + 1) + ": ")
@@ -21,10 +21,15 @@ def initPlayers(n, bal = 0):
 # By default the players' scores are initialized as null by "initPlayers" function
 def firstTurn(players, deck):
     flag = False
-    for name, player in players.items():
-        print("─"*5 + "┤", "Round 1", "; Player:", name, "├" + "─"*5)
-        c = d.drawCard(deck, 2)
-        print(name + "'s", "first draw:", c[0], c[1])
+    for i, (name, player) in enumerate(players.items()):
+        form = f"┤ Round 1 ; Player: {name} ├"
+        if i == 0:
+            print(f"{form:{'─'}^80s}" + "\b┐\r┌")
+        else:
+            print(f"{form:{'─'}^80s}" + "\b┤\r├")
+        c = d.drawCard(deck, len(players), 2)
+        drawText = f"│{name}'s fist draw: {c[0]} {c[1]}"
+        print(f"{drawText:<80s}" + "\b│")
         s = d.valueCard(c[0])
         s = 11 if s == 1 else s
         t = d.valueCard(c[1])

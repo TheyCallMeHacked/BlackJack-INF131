@@ -1,10 +1,16 @@
+#!/bin/python
+
 import players as p
 import deck as d
 import game_management as gm
+import sys
 
-def main():
+def main(argv):
     n = int(input("How many players will play? "))
-    players = p.initPlayers(n)
+    if len(argv) > 1:
+        players = p.initPlayers(n, argv[1])
+    else:
+        players = p.initPlayers(n)
     playing = True
     while playing:
         deck = d.initStack(n)
@@ -14,4 +20,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
