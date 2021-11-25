@@ -20,7 +20,7 @@ def initPlayers(n, bal = 0):
 
 # By default the players' scores are initialized as null by "initPlayers" function
 def firstTurn(players, deck):
-    flag = True
+    flag = False
     for name, player in players.items():
         print("─"*5 + "┤", "Round 1", "; Player:", name, "├" + "─"*5)
         c = d.drawCard(deck, 2)
@@ -31,7 +31,7 @@ def firstTurn(players, deck):
         t = 11 if (s > 10 and t == 1) else t
         player["score"][-1] = s + t
         flag = flag or (s + t == 21)
-    return not(flag)
+    return flag
 
 def winner(players):
     maxScore = 0
