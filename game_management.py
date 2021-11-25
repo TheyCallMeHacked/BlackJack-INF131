@@ -30,9 +30,11 @@ def playerTurn(player, playerName, turnNumber, deck):
     canDouble = (player["bet"][0]*2) <= player["balance"]
     con = playerAction(player["bet"], canDouble)
     if con:
-        c = deck.valueCard(d.drawCard(deck))
-        c = 11 if c == 1 and player["score"][-1] > 10 else c
-        player["score"][-1] += c
+        c = d.drawCard(deck)
+        print(playerName+"'s", "draw:", c[0])
+        v = d.valueCard(c[0])
+        v = 11 if (v == 1 and player["score"][-1] > 10) else v
+        player["score"][-1] += v
         if player["score"][-1] >= 21:
             player["stillPlaying"] = False
         return
@@ -44,23 +46,33 @@ def playerTurn(player, playerName, turnNumber, deck):
 # d: the deck of cards   
 def gameTurn(players, turnNumber, deck):
     for name, player in players.items():
-        if player["stillPLaying"]:
+        if player["stillPlaying"]:
             playerTurn(player, name, turnNumber, deck)
 
 def gameOver(players):
     flag = True
-    for player in players:
-        flag = flag or not(player["stillPlaying"])
+    for _,player in players.items():
+        flag = flag and not(player["stillPlaying"])
     return flag
+
 # @param
 # d: the deck of cards
 def completeGame(players, deck):
     for _,player in players.items():
-        players["score"].append(0)
+        player["score"].append(0)
+    if p.firstTurn(players, deck):
+        for _,player in players.items():
+            player["stillPlaying"] = False
     i = 0
     while not gameOver(players):
         gameTurn(players, i, deck)
         i += 1
     score, win = p.winner(players)
-    print("─"*5 + "┤", "Game Over ;", win, "won the game with a score of", score, "├" + "─"*5)
-    players[win]["wins"] += 1
+    print("─"*5 + "┤", "Game Over ;", end=' ')
+    if score:
+        for w in win:
+            print(w, end=", ")
+        print("\b\b won the game with a score of", score, end='')
+    else:
+        print("Nobody won this game", end='')
+    print("├" + "─"*5)
