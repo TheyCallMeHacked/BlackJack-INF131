@@ -7,7 +7,7 @@ def main():
     players = p.initPlayers(n)
     playing = True
     while playing:
-        deck = d.deck()
+        deck = d.initStack(n)
         gm.completeGame(players, deck)
         playing = input("replay? [y/N] ").lower() in ["yes", "y"]
 
