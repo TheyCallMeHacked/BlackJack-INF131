@@ -5,16 +5,14 @@ import deck as d
 # The players'scores are already given by initPlayer function so defining a "initScores" \
 # function is not necessary 
 
-def initPlayers(n, bal = 0):
+def initPlayers(n, bal = 100):
     players = {}
     for i in range(n):
         name = input("Name of player " + str(i + 1) + ": ")
         players[name] = {
             'score'        : [],
             'wins'         : 0,
-            'balance'      : bal,
             'stillPlaying' : True,
-            'bet'          : [0]
         }
     return players
 

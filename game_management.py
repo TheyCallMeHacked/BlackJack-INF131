@@ -1,23 +1,14 @@
 import deck as d
 import players as p
 
-def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
-    action = input("Your action [hit, stand" + (", double down" if canDouble else "") + "]: ").lower()
-    if action in ["double", "double down", "d"] and not canDouble:
-        print("Your balance is too low to double down.")
-        action = ""
+def playerAction(): # Renamed continue() to playerAction() because continue is a key-word. Also added 
+    action = input("Your action [hit, stand]: ").lower()
     while action not in ["hit", "h",                    # Hit = Croupier draws a new card for that player
-                         "stand", "s",                  # Stand = The player takes no more cards
-                         "double", "double down", "d"]: # Double Down = The player's bet is doubled and the croupier draws an other card for that player
-        action = input("Your action [hit, stand" + (", double down" if canDouble else "") + "]: ").lower()
-        if action in ["double", "double down", "d"] and not canDouble:
-            print("Your balance is too low to double down.")
-            action = ""
+                         "stand", "s"]:                 # Stand = The player takes no more cards
+        action = input("Your action [hit, stand]: ").lower()
     
     if action in ["stand", "s"]:
         return False
-    if action in ["double", "double down", "d"]:
-        bet[0] *= 2
     return True
 
 # @ param
@@ -27,8 +18,7 @@ def playerAction(bet, canDouble): # Renamed continue() to playerAction() because
 # deck: the deck of cards
 def playerTurn(player, playerName, turnNumber, deck):
     print("─"*5 + "┤", "Round", turnNumber, "; Player:", playerName, "; Score:", player["score"][-1], "├" + "─"*5)
-    canDouble = (player["bet"][0]*2) <= player["balance"]
-    con = playerAction(player["bet"], canDouble)
+    con = playerAction()
     if con:
         c = d.drawCard(deck)
         print(playerName+"'s", "draw:", c[0])
@@ -72,7 +62,7 @@ def completeGame(players, deck):
     if score:
         for w in win:
             print(w, end=", ")
-        print("\b\b won the game with a score of", score, end='')
+        print("\b\b won the game with a score of", score, end=' ')
     else:
-        print("Nobody won this game", end='')
+        print("Nobody won this game", end=' ')
     print("├" + "─"*5)
