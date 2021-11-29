@@ -24,7 +24,7 @@ def firstTurn(players, deck):
     for i, (name, player) in enumerate(players.items()):
         form = f"┤ Round 1 ; Player: {name} ├"
         if i == 0:
-            print(f"{form:{'─'}^80s}" + "\b┐\r┌")
+            print(f"{form:{'─'}^80s}" + "\b╮\r╭")
         else:
             print(f"{form:{'─'}^80s}" + "\b┤\r├")
         c = d.drawCard(deck, len(players), 2)

@@ -8,7 +8,7 @@ import sys
 def main(argv):
     n = int(input("How many players will play? "))
     if len(argv) > 1:
-        players = p.initPlayers(n, argv[1])
+        players = p.initPlayers(n, int(argv[1]))
     else:
         players = p.initPlayers(n)
     playing = True

@@ -4,14 +4,14 @@ import players as p
 def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
     prompt = "│Your action [hit, stand" + (", double down" if canDouble else "") + "]: "
     noDoubleString = "│Your balance is too low to double down."
-    action = input(f"{prompt:{' '}<80s}" + "\b│\r\t\t\t\t" + ("\t" if canDouble else "")).lower()
+    action = input(f"{' ':{' '}<80s}" + "\b│\r" + prompt).lower()
     if action in ["double", "double down", "d"] and not canDouble:
         print(f"{noDoubleString:{' '}<80s}" + "\b│")
         action = ""
     while action not in ["hit", "h",                    # Hit = Croupier draws a new card for that player
                          "stand", "s",                  # Stand = The player takes no more cards
                          "double", "double down", "d"]: # Double Down = The player's bet is doubled and the croupier draws an other card for that player
-        action = ininput(f"{prompt:{' '}<80s}" + "\b│\r\t\t\t\t" + ("\t" if canDouble else "")).lower()
+        action = input(f"{' ':{' '}<80s}" + "\b│\r" + prompt).lower()
         if action in ["double", "double down", "d"] and not canDouble:
             print(f"{noDoubleString:{' '}<80s}" + "\b│")
             action = ""
@@ -71,7 +71,7 @@ def completeGame(players, deck):
             try:
                 bal = player["balance"]
                 bet = float(input(f"{name}'s bet (balance: ${bal:.2f}): "))
-                if bet <= 0:
+                if bet <= 0 or bet > bal:
                     raise ValueError
                 player["bet"] = [bet]
                 sanitized = True
@@ -100,4 +100,4 @@ def completeGame(players, deck):
     else:
         form = f"┤ Game Over ; Nobody won ├"
 
-    print(f"{form:{'─'}^80s}" + "\b┘\r└")
+    print(f"{form:{'─'}^80s}" + "\b╯\r╰")
