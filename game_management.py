@@ -35,10 +35,10 @@ def playerTurn(player, playerName, turnNumber, deck, nPlayers):
     con = playerAction(player["bet"], canDouble)
     if con:
         c = d.drawCard(deck, nPlayers)
-        drawText = f"│{playerName}'s fist draw: {c[0]}"
+        drawText = f"│{playerName}'s draw: {c[0]}"
         print(f"{drawText:<80s}" + "\b│")
         v = d.valueCard(c[0])
-        v = 11 if (v == 1 and player["score"][-1] > 10) else v
+        v = 11 if (v == 1 and player["score"][-1] < 11) else v
         player["score"][-1] += v
         if player["score"][-1] >= 21:
             player["stillPlaying"] = False
@@ -63,23 +63,34 @@ def gameOver(players):
 # @param
 # d: the deck of cards
 def completeGame(players, deck):
+    
     for name,player in players.items():
         player["score"].append(0)
         player["stillPlaying"] = True
-        sanitized = False
-        while not sanitized:
-            try:
-                bal = player["balance"]
-                bet = float(input(f"{name}'s bet (balance: ${bal:.2f}): "))
-                if bet <= 0 or bet > bal:
-                    raise ValueError
-                player["bet"] = [bet]
-                sanitized = True
-            except:
+        sanitised = False
+        while not sanitised:
+            bal = player["balance"]
+            bet = input(f"{name}'s bet (balance: ${bal:.2f}): ").split('.')     # splitting the input in integer and decimal part
+            if len(bet) > 2 or len(bet) < 0:                                    # if there are more than two elements in the list, the input was not a valid real number
                 print("Invalid value")
+            else:                                                               # otherwise, the input sanitisation can continue
+                flag = True                                                     # test if all the inputed characters (excluding the decimal point) were digits
+                for i in ''.join(bet):
+                    if i not in "0123456789":
+                        flag = False
+                if flag:                                                        # if it's the case, the input is finally sanitised and can be processed
+                    bet = float('.'.join(bet))
+                    if bet > bal:                                               # cannot bet more than you own
+                        print("Invalid value")
+                    else:
+                        player["bet"] = [bet]
+                        sanitised = True
+                else:                                                           # otherwise the input was not a valid number
+                    print("Invalid value")
 
-
+    blackJack = False
     if p.firstTurn(players, deck):
+        blackJack = True
         for _,player in players.items():
             player["stillPlaying"] = False
     i = 2
@@ -88,15 +99,20 @@ def completeGame(players, deck):
         i += 1
     score, winners = p.winner(players)
 
+    broke = []
     for name, player in players.items():
         if name in winners:
             player["wins"] += 1
-            player["balance"] += player["bet"][0]
+            player["balance"] += player["bet"][0] + blackJack*0.5*player["bet"][0]
         else:
             player["balance"] -= player["bet"][0]
-    
+            if player["balance"] == 0:
+                broke.append(name)
+    for name in broke:
+        del players[name]
+
     if score:
-        form = f"┤ Game Over ; {' '.join(winners)} won the game with {score} points ├"
+        form = f"┤ Game Over ; {', '.join(winners)} won the game with {score} points ├"
     else:
         form = f"┤ Game Over ; Nobody won ├"
 

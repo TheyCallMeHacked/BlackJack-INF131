@@ -16,6 +16,9 @@ def main(argv):
         deck = d.initStack(n)
         gm.completeGame(players, deck)
         playing = input("replay? [y/N] ").lower() in ["yes", "y"]
+        if playing and players == {}:
+            print("No players have money anymore, exiting.")
+            return
 
 
 

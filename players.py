@@ -33,7 +33,7 @@ def firstTurn(players, deck):
         s = d.valueCard(c[0])
         s = 11 if s == 1 else s
         t = d.valueCard(c[1])
-        t = 11 if (s > 10 and t == 1) else t
+        t = 11 if (s < 11 and t == 1) else t
         player["score"][-1] = s + t
         flag = flag or (s + t == 21)
     return flag
