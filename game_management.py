@@ -101,7 +101,7 @@ def completeGame(players, deck):
         gameTurn(players, i, deck)
         i += 1
     if not blackJack:
-        c.play(croupier) # when every player has standed or busted, it's the croupier's turn
+        c.play(croupier, deck) # when every player has standed or busted, it's the croupier's turn
 
     winners = p.winner(players, croupier)
 
@@ -118,7 +118,7 @@ def completeGame(players, deck):
         del players[name]
 
     if len(winners):
-        form = f"┤ Game Over ; {', '.join(winners)} won the game against the house ├"
+        form = f"┤ Game Over ; {', '.join(winners)} won the game {'with a Black Jack ' if blackJack else ''}against the house ├"
     else:
         form = f"┤ Game Over ; All players lost to the house ├"
 

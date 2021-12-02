@@ -19,7 +19,7 @@ def firstTurn(croupier, deck, nPlayers):
     drawText = f"│Croupier's first draw: {cards[0]} ██"
     print(f"{drawText:<80s}" + "\b│")
 
-def play(croupier):
+def play(croupier, deck):
     stillPlaying = True
     form = f"┤ Croupier's turn ├"
     print(f"{form:{'─'}^80s}" + "\b┤\r├")
@@ -33,4 +33,26 @@ def play(croupier):
 
     
     while stillPlaying:
-        stillPlaying = False
+        if croupier["score"] < 17:                                                              # if croupier's hand below 17, hit
+            card = d.drawCard(deck, nPlayers)[0]
+            value = d.valueCard(card)
+            croupier["score"] += 11 if (value == 1 and croupier["score"] < 11) else value
+            if croupier["score"] >= 21:
+                stillPlaying = False
+            croupier["up"].append(card)
+        elif croupier["score"] == 17:                                                           # if croupier's hand at 17, check if hard or soft 17 
+            if croupier["up"] in ["♥A", "♦A", "♣A", "♠A"]:                                      # if soft 17, hit
+                card = d.drawCard(deck, nPlayers)[0]
+                value = d.valueCard(card)
+                croupier["score"] += 11 if (value == 1 and croupier["score"] < 11) else value
+                if croupier["score"] >= 21:
+                    stillPlaying = False
+                croupier["up"].append(card)
+            else:                                                                               # if hard 17, stand
+                stillPlaying = False
+        else:                                                                                   # if dealer's hand above 17, stand
+            stillPlaying = False
+
+
+    drawText = f"│Croupier's hand: {' '.join(croupier['up'])}"                       # showing the croupier's hand
+    print(f"{drawText:<80s}" + "\b│") 
