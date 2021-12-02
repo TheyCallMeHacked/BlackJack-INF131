@@ -1,5 +1,6 @@
 import deck as d
 import players as p
+import croupier as c
 
 def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
     prompt = "│Your action [hit, stand" + (", double down" if canDouble else "") + "]: "
@@ -63,7 +64,7 @@ def gameOver(players):
 # @param
 # d: the deck of cards
 def completeGame(players, deck):
-    
+    croupier = c.initCroupier()
     for name,player in players.items():
         player["score"].append(0)
         player["stillPlaying"] = True
@@ -80,7 +81,7 @@ def completeGame(players, deck):
                         flag = False
                 if flag:                                                        # if it's the case, the input is finally sanitised and can be processed
                     bet = float('.'.join(bet))
-                    if bet > bal:                                               # cannot bet more than you own
+                    if bet > bal or bet < 5:                                    # cannot bet more than you own or less than $5
                         print("Invalid value")
                     else:
                         player["bet"] = [bet]
@@ -93,11 +94,16 @@ def completeGame(players, deck):
         blackJack = True
         for _,player in players.items():
             player["stillPlaying"] = False
+    c.firstTurn(croupier, deck, len(players))
+
     i = 2
     while not gameOver(players):
         gameTurn(players, i, deck)
         i += 1
-    score, winners = p.winner(players)
+    if not blackJack:
+        c.play(croupier) # when every player has standed or busted, it's the croupier's turn
+
+    winners = p.winner(players, croupier)
 
     broke = []
     for name, player in players.items():
@@ -111,9 +117,9 @@ def completeGame(players, deck):
     for name in broke:
         del players[name]
 
-    if score:
-        form = f"┤ Game Over ; {', '.join(winners)} won the game with {score} points ├"
+    if len(winners):
+        form = f"┤ Game Over ; {', '.join(winners)} won the game against the house ├"
     else:
-        form = f"┤ Game Over ; Nobody won ├"
+        form = f"┤ Game Over ; All players lost to the house ├"
 
     print(f"{form:{'─'}^80s}" + "\b╯\r╰")

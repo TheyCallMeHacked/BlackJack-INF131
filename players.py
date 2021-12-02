@@ -38,17 +38,13 @@ def firstTurn(players, deck):
         flag = flag or (s + t == 21)
     return flag
 
-def winner(players):
-    maxScore = 0
-    maxPlayer = []
+def winner(players, croupier):
+    winners = []
     for n, p in players.items():
-        if 21 >= p["score"][-1] > maxScore:
-            maxScore = p["score"][-1]
-            maxPlayer = [n]
-        elif p["score"][-1] == maxScore:
-            maxPlayer.append(n)
+        if 21 >= p["score"][-1] >= croupier["score"]:
+            winners.append(n)
     
-    return maxScore, maxPlayer
+    return winners
 
 
 
