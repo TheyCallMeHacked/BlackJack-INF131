@@ -20,10 +20,25 @@ def valueCard(card):
             raise ValueError
     except ValueError:
         if card[1:] == "A":
-            return 1
+            return 11
         if card[1:] in ["J","Q","K"]:
             return 10
     raise ValueError("Invalid card format")
+
+def calcScore(hand, croupierMode = False):
+    num_soft_Aces = 0
+    score = 0
+    for card in hand:
+        if card in ["♥A", "♦A", "♣A", "♠A"]:
+            num_soft_Aces += 1
+        score += valueCard(card)
+    
+    while score > 21 and num_soft_Aces > 0:
+        score -= 10
+    if croupierMode:
+        return score, (num_soft_Aces == 0)
+    else:
+        return score
 
 def initStack(n):
     d = []

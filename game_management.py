@@ -35,12 +35,11 @@ def playerTurn(player, playerName, turnNumber, deck, nPlayers):
     canDouble = (player["bet"][0]*2) <= player["balance"]
     con = playerAction(player["bet"], canDouble)
     if con:
-        c = d.drawCard(deck, nPlayers)
-        drawText = f"│{playerName}'s draw: {c[0]}"
+        c = d.drawCard(deck, nPlayers)[0]
+        drawText = f"│{playerName}'s draw: {c}"
         print(f"{drawText:<80s}" + "\b│")
-        v = d.valueCard(c[0])
-        v = 11 if (v == 1 and player["score"][-1] < 11) else v
-        player["score"][-1] += v
+        player["hand"].append(c)
+        player["score"][-1] = d.calcScore(player["hand"])
         if player["score"][-1] >= 21:
             player["stillPlaying"] = False
         return
@@ -101,7 +100,7 @@ def completeGame(players, deck):
         gameTurn(players, i, deck)
         i += 1
     if not blackJack:
-        c.play(croupier, deck) # when every player has standed or busted, it's the croupier's turn
+        c.play(croupier, deck, len(players)) # when every player has standed or busted, it's the croupier's turn
 
     winners = p.winner(players, croupier)
 

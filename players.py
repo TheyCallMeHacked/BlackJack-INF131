@@ -14,7 +14,8 @@ def initPlayers(n, bal = 100):
             'wins'         : 0,
             'balance'      : bal,
             'stillPlaying' : True,
-            'bet'          : [0]
+            'bet'          : [0],
+            'hand'         : []
         }
     return players
 
@@ -30,18 +31,15 @@ def firstTurn(players, deck):
         c = d.drawCard(deck, len(players), 2)
         drawText = f"│{name}'s fist draw: {c[0]} {c[1]}"
         print(f"{drawText:<80s}" + "\b│")
-        s = d.valueCard(c[0])
-        s = 11 if s == 1 else s
-        t = d.valueCard(c[1])
-        t = 11 if (s < 11 and t == 1) else t
-        player["score"][-1] = s + t
-        flag = flag or (s + t == 21)
+        player["hand"] = c
+        player["score"][-1] = d.calcScore(player["hand"])
+        flag = flag or (player["score"] == 21)
     return flag
 
 def winner(players, croupier):
     winners = []
     for n, p in players.items():
-        if 21 >= p["score"][-1] >= croupier["score"]:
+        if 21 >= p["score"][-1] and (p["score"][-1] >= croupier["score"] or croupier["score"] > 21):
             winners.append(n)
     
     return winners
