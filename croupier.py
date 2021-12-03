@@ -12,7 +12,7 @@ def initCroupier():
 def firstTurn(croupier, deck, nPlayers):
     cards = d.drawCard(deck, nPlayers, 2)
     croupier["up"].append(cards[0])
-    croupier["score"] = d.calcScore(croupier["up"], True)
+    croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)
     croupier["down"] = cards[1]
     form = f"┤ Round 1 ; Croupier ├"
     print(f"{form:{'─'}^80s}" + "\b┤\r├")
@@ -35,14 +35,14 @@ def play(croupier, deck, nPlayers):
         if croupier["score"] < 17:                                                       # if croupier's hand below 17, hit
             card = d.drawCard(deck, nPlayers)[0]
             croupier["up"].append(card)
-            croupier["score"], croupier['hard'] = d.calcScore(croupier["up"], True)
+            croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)
             if croupier["score"] >= 21:
                 stillPlaying = False
         elif croupier["score"] == 17:                                                    # if croupier's hand at 17, check if hard or soft 17 
             if not croupier["hard"]:                                                     # if soft 17, hit
                 card = d.drawCard(deck, nPlayers)[0]
                 croupier["up"].append(card)
-                croupier["score"], croupier[hard] = d.calcScore(croupier["up"], True)
+                croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)
                 if croupier["score"] >= 21:
                     stillPlaying = False
             else:                                                                        # if hard 17, stand

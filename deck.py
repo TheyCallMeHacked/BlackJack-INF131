@@ -35,6 +35,8 @@ def calcScore(hand, croupierMode = False):
     
     while score > 21 and num_soft_Aces > 0:
         score -= 10
+        num_soft_Aces -= 1
+        
     if croupierMode:
         return score, (num_soft_Aces == 0)
     else:

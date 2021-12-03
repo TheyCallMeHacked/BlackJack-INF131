@@ -33,7 +33,7 @@ def firstTurn(players, deck):
         print(f"{drawText:<80s}" + "\b│")
         player["hand"] = c
         player["score"][-1] = d.calcScore(player["hand"])
-        flag = flag or (player["score"] == 21)
+        flag = flag or (player["score"][-1] == 21)
     return flag
 
 def winner(players, croupier):

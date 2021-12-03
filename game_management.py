@@ -88,9 +88,8 @@ def completeGame(players, deck):
                 else:                                                           # otherwise the input was not a valid number
                     print("Invalid value")
 
-    blackJack = False
-    if p.firstTurn(players, deck):
-        blackJack = True
+    blackJack = p.firstTurn(players, deck)
+    if blackJack:
         for _,player in players.items():
             player["stillPlaying"] = False
     c.firstTurn(croupier, deck, len(players))
