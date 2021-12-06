@@ -19,6 +19,13 @@ def main(argv):
         if playing and players == {}:
             print("No players have money anymore, exiting.")
             return
+    
+    form = f"┤ Recap for players that didn't go broke ├"
+    print(f"{form:{'─'}^80s}" + "\b╮\r╭")
+    for name, player in players.items():
+        form = f"│{name} won {player['wins']} game{'' if player['wins'] == 1 else 's'} out of {len(player['score'])} with a final balance of ${player['balance']:.2f}"
+        print(f"{form:{' '}<80s}" + "\b│")
+    print(f"{'':{'─'}^80s}" + "\b╯\r╰")
 
 
 
