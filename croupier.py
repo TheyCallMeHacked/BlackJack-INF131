@@ -32,6 +32,9 @@ def play(croupier, deck, nPlayers):
 
     
     while stillPlaying:
+
+        # Following Croupier Basic Strategy, as described in most croupier guides (only stand on hard 17 or higher):
+        
         if croupier["score"] < 17:                                                       # if croupier's hand below 17, hit
             card = d.drawCard(deck, nPlayers)[0]
             croupier["up"].append(card)
