@@ -1,26 +1,21 @@
 import deck as d
 import players as p
 import croupier as c
-from tkinter import *
-from tkinter import ttk
 
-def playerAction(bet, canDouble, nogui = False, root = []): # Renamed continue() to playerAction() because continue is a key-word. Also added 
-    if True:
-        prompt = "│Your action [hit, stand" + (", double down" if canDouble else "") + "]: "
-        noDoubleString = "│Your balance is too low to double down."
+def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
+    prompt = "│Your action [hit, stand" + (", double down" if canDouble else "") + "]: "
+    noDoubleString = "│Your balance is too low to double down."
+    action = input(f"{' ':{' '}<80s}" + "\b│\r" + prompt).lower()
+    if action in ["double", "double down", "d"] and not canDouble:
+        print(f"{noDoubleString:{' '}<80s}" + "\b│")
+        action = ""
+    while action not in ["hit", "h",                    # Hit = Croupier draws a new card for that player
+                         "stand", "s",                  # Stand = The player takes no more cards
+                         "double", "double down", "d"]: # Double Down = The player's bet is doubled and the croupier draws an other card for that player
         action = input(f"{' ':{' '}<80s}" + "\b│\r" + prompt).lower()
         if action in ["double", "double down", "d"] and not canDouble:
             print(f"{noDoubleString:{' '}<80s}" + "\b│")
             action = ""
-        while action not in ["hit", "h",                    # Hit = Croupier draws a new card for that player
-                            "stand", "s",                  # Stand = The player takes no more cards
-                            "double", "double down", "d"]: # Double Down = The player's bet is doubled and the croupier draws an other card for that player
-            action = input(f"{' ':{' '}<80s}" + "\b│\r" + prompt).lower()
-            if action in ["double", "double down", "d"] and not canDouble:
-                print(f"{noDoubleString:{' '}<80s}" + "\b│")
-                action = ""
-    else:
-        pass
     
     if action in ["stand", "s"]:
         return False
@@ -33,15 +28,10 @@ def playerAction(bet, canDouble, nogui = False, root = []): # Renamed continue()
 # playerName: the player's name
 # turnNumber: current turn number to be printed
 # deck: the deck of cards
-def playerTurn(player, playerName, turnNumber, deck, nPlayers, gui):
+def playerTurn(player, playerName, turnNumber, deck, nPlayers):
     score = player["score"][-1]
-
-    root, casinoTable, uname, balText, scoreText, betText = gui.values()
-    uname.set(playerName)
-    balText.set(f"${player['balance']:.2f}")
-    scoreText.set(score)
-    betText.set(f"${player['bet'][0]:.2f}")
-    
+    form = f"┤ Round {turnNumber} ; Player: {playerName} ; Score: {score} ├"
+    print(f"{form:{'─'}^80s}" + "\b┤\r├")
     canDouble = (player["bet"][0]*2) <= player["balance"]
     con = playerAction(player["bet"], canDouble)
     if con:
@@ -59,10 +49,10 @@ def playerTurn(player, playerName, turnNumber, deck, nPlayers, gui):
 # player: the player object
 # turnNumber: current turn number to be printed
 # deck: the deck of cards   
-def gameTurn(players, turnNumber, deck, gui):
+def gameTurn(players, turnNumber, deck):
     for name, player in players.items():
         if player["stillPlaying"]:
-            playerTurn(player, name, turnNumber, deck, len(players), gui)
+            playerTurn(player, name, turnNumber, deck, len(players))
 
 def gameOver(players):
     flag = True
@@ -72,43 +62,31 @@ def gameOver(players):
 
 # @param
 # d: the deck of cards
-def completeGame(players, deck, gui):
-    root = list(gui.values())[0]
-
+def completeGame(players, deck):
     croupier = c.initCroupier()
     for name,player in players.items():
         player["score"].append(0)
         player["stillPlaying"] = True
-        bal = player["balance"]
-        
-        def dismiss():
-            dlg.grab_release()
-            dlg.destroy()
-
-        bet = [0]
-        def retrieve(*arg):
-            try:
-                bet[0] = float(bet_player.get())
-            except:
-                pass
-            else:
-                dismiss()
-
-        dlg = Toplevel(root)
-        ttk.Label(dlg, text=f"{name}'s bet (balance: ${bal:.2f}): ").grid(column=0, row=0, padx=5, pady=5)
-        bet_player = StringVar()
-        bet_entry = ttk.Entry(dlg, textvariable=bet_player)
-        bet_entry.grid(column=1, row=0, padx=5, pady=5)
-        ttk.Button(dlg, text="Submit", command=retrieve).grid(column=0, row=1, columnspan=2, padx=5, pady=5)
-        dlg.protocol("WM_DELETE_WINDOW", dismiss) # intercept close button
-        dlg.transient(root)   # dialog window is related to main
-        dlg.wait_visibility() # can't grab until window appears, so we wait
-        dlg.grab_set()        # ensure all input goes to our window
-        bet_entry.focus()
-        dlg.bind("<Return>", retrieve)
-        dlg.wait_window()     # block until window is destroyed
-
-        player["bet"] = [bet[0]]
+        sanitised = False
+        while not sanitised:
+            bal = player["balance"]
+            bet = input(f"{name}'s bet (balance: ${bal:.2f}): ").split('.')     # splitting the input in integer and decimal part
+            if len(bet) > 2 or len(bet) < 0:                                    # if there are more than two elements in the list, the input was not a valid real number
+                print("Invalid value")
+            else:                                                               # otherwise, the input sanitisation can continue
+                flag = True                                                     # test if all the inputed characters (excluding the decimal point) were digits
+                for i in ''.join(bet):
+                    if i not in "0123456789":
+                        flag = False
+                if flag:                                                        # if it's the case, the input is finally sanitised and can be processed
+                    bet = float('.'.join(bet))
+                    if bet > bal or bet < 5:                                    # cannot bet more than you own or less than $5
+                        print("Invalid value")
+                    else:
+                        player["bet"] = [bet]
+                        sanitised = True
+                else:                                                           # otherwise the input was not a valid number
+                    print("Invalid value")
 
     blackJack = p.firstTurn(players, deck)
     if blackJack:
@@ -118,7 +96,7 @@ def completeGame(players, deck, gui):
 
     i = 2
     while not gameOver(players):
-        gameTurn(players, i, deck, gui)
+        gameTurn(players, i, deck)
         i += 1
     if not blackJack:
         c.play(croupier, deck, len(players)) # when every player has standed or busted, it's the croupier's turn

@@ -2,22 +2,62 @@
 
 import players as p
 import deck as d
-import game_management as gm
+#import game_management as gm
+from tkinter import *
+from tkinter import ttk
+import gui
 import sys
 
-def main(argv):
-    n = int(input("How many players will play? "))
-    if len(argv) > 1:
-        players = p.initPlayers(n, int(argv[1]))
+def main(argv, nogui=False):
+    if nogui:
+        n = int(input("How many players will play? "))
     else:
-        players = p.initPlayers(n)
+        root, casinoTable, uname, bal, score, bet = gui.generateGUI()
+
+        def dismiss():
+            dlg.grab_release()
+            dlg.destroy()
+
+        n = [0]
+        def retrieve(*arg):
+            try:
+                n[0] = int(n_player.get())
+            except:
+                pass
+            else:
+                dismiss()
+
+        dlg = Toplevel(root)
+        ttk.Label(dlg, text="Number of players:").grid(column=0, row=0, padx=5, pady=5)
+        n_player = StringVar()
+        n_entry = ttk.Entry(dlg, textvariable=n_player)
+        n_entry.grid(column=1, row=0, padx=5, pady=5)
+        ttk.Button(dlg, text="Submit", command=retrieve).grid(column=0, row=1, columnspan=2, padx=5, pady=5)
+        dlg.protocol("WM_DELETE_WINDOW", dismiss) # intercept close button
+        dlg.transient(root)   # dialog window is related to main
+        dlg.wait_visibility() # can't grab until window appears, so we wait
+        dlg.grab_set()        # ensure all input goes to our window
+        n_entry.focus()
+        dlg.bind("<Return>", retrieve)
+        dlg.wait_window()     # block until window is destroyed
+
+        n = n[0]
+    if nogui:
+        root = []
+    if len(argv) > 1:
+        players = p.initPlayers(n, nogui, root, int(argv[1]))
+    else:
+        players = p.initPlayers(n, nogui, root)
     playing = True
     while playing:
         deck = d.initStack(n)
-        gm.completeGame(players, deck)
+        if nogui:
+            gm.completeGame(players, deck)
+        else:
+            gm.completeGame(players, deck, {'root': root, 'table': casinoTable, 'uname': uname, 'bal':bal, 'score':score, 'bet':bet})
         playing = input("replay? [y/N] ").lower() in ["yes", "y"]
         if playing and players == {}:
-            print("No players have money anymore, exiting.")
+            print("No players have got money anymore, exiting.")
             return
     
     form = f"┤ Recap for players that didn't go broke ├"
@@ -30,4 +70,14 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    nogui = "--no-gui" in sys.argv
+    argv = sys.argv
+    if nogui:
+        for i,a in enumerate(sys.argv):
+            if a == "--no-gui":
+                argv.pop(i)
+        import game_management_nogui as gm
+    else:
+        import game_management as gm
+
+    main(argv, nogui)
