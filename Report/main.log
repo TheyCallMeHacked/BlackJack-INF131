@@ -1,0 +1,836 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.25)  11 DEC 2021 16:51
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./main.tex
+(./main.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/share/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count179
+\c@chapter=\count180
+\c@section=\count181
+\c@subsection=\count182
+\c@subsubsection=\count183
+\c@paragraph=\count184
+\c@subparagraph=\count185
+\c@figure=\count186
+\c@table=\count187
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+)
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+(/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2021/03/24 3.56 The Babel package
+
+(/usr/share/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2021/03/24 3.56 Babel common definitions
+\babel@savecnt=\count188
+\U@D=\dimen139
+\l@babelnohyphens=\language87
+
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+)
+\bbl@dirlevel=\count189
+
+(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 108.
+))
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
+
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count190
+)
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/share/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count191
+
+(/usr/share/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count192
+\c@listtotal=\count193
+\c@listcount=\count194
+\c@liststart=\count195
+\c@liststop=\count196
+\c@citecount=\count197
+\c@citetotal=\count198
+\c@multicitecount=\count199
+\c@multicitetotal=\count266
+\c@instcount=\count267
+\c@maxnames=\count268
+\c@minnames=\count269
+\c@maxitems=\count270
+\c@minitems=\count271
+\c@citecounter=\count272
+\c@maxcitecounter=\count273
+\c@savedcitecounter=\count274
+\c@uniquelist=\count275
+\c@uniquename=\count276
+\c@refsection=\count277
+\c@refsegment=\count278
+\c@maxextratitle=\count279
+\c@maxextratitleyear=\count280
+\c@maxextraname=\count281
+\c@maxextradate=\count282
+\c@maxextraalpha=\count283
+\c@abbrvpenalty=\count284
+\c@highnamepenalty=\count285
+\c@lownamepenalty=\count286
+\c@maxparens=\count287
+\c@parenlevel=\count288
+\blx@tempcnta=\count289
+\blx@tempcntb=\count290
+\blx@tempcntc=\count291
+\blx@maxsection=\count292
+\blx@maxsegment@0=\count293
+\blx@notetype=\count294
+\blx@parenlevel@text=\count295
+\blx@parenlevel@foot=\count296
+\blx@sectionciteorder@0=\count297
+\blx@entrysetcounter=\count298
+\blx@biblioinstance=\count299
+\labelnumberwidth=\skip49
+\labelalphawidth=\skip50
+\biblabelsep=\skip51
+\bibitemsep=\skip52
+\bibnamesep=\skip53
+\bibinitsep=\skip54
+\bibparsep=\skip55
+\bibhang=\skip56
+\blx@bcfin=\read3
+\blx@bcfout=\write3
+\blx@langwohyphens=\language88
+\c@mincomprange=\count300
+\c@maxcomprange=\count301
+\c@mincompwidth=\count302
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2020/12/31 v3.16 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'verbose-ibid.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count303
+\c@savedafterword=\count304
+\c@annotator=\count305
+\c@savedannotator=\count306
+\c@author=\count307
+\c@savedauthor=\count308
+\c@bookauthor=\count309
+\c@savedbookauthor=\count310
+\c@commentator=\count311
+\c@savedcommentator=\count312
+\c@editor=\count313
+\c@savededitor=\count314
+\c@editora=\count315
+\c@savededitora=\count316
+\c@editorb=\count317
+\c@savededitorb=\count318
+\c@editorc=\count319
+\c@savededitorc=\count320
+\c@foreword=\count321
+\c@savedforeword=\count322
+\c@holder=\count323
+\c@savedholder=\count324
+\c@introduction=\count325
+\c@savedintroduction=\count326
+\c@namea=\count327
+\c@savednamea=\count328
+\c@nameb=\count329
+\c@savednameb=\count330
+\c@namec=\count331
+\c@savednamec=\count332
+\c@translator=\count333
+\c@savedtranslator=\count334
+\c@shortauthor=\count335
+\c@savedshortauthor=\count336
+\c@shorteditor=\count337
+\c@savedshorteditor=\count338
+\c@labelname=\count339
+\c@savedlabelname=\count340
+\c@institution=\count341
+\c@savedinstitution=\count342
+\c@lista=\count343
+\c@savedlista=\count344
+\c@listb=\count345
+\c@savedlistb=\count346
+\c@listc=\count347
+\c@savedlistc=\count348
+\c@listd=\count349
+\c@savedlistd=\count350
+\c@liste=\count351
+\c@savedliste=\count352
+\c@listf=\count353
+\c@savedlistf=\count354
+\c@location=\count355
+\c@savedlocation=\count356
+\c@organization=\count357
+\c@savedorganization=\count358
+\c@origlocation=\count359
+\c@savedoriglocation=\count360
+\c@origpublisher=\count361
+\c@savedorigpublisher=\count362
+\c@publisher=\count363
+\c@savedpublisher=\count364
+\c@language=\count365
+\c@savedlanguage=\count366
+\c@origlanguage=\count367
+\c@savedoriglanguage=\count368
+\c@pageref=\count369
+\c@savedpageref=\count370
+\shorthandwidth=\skip57
+\shortjournalwidth=\skip58
+\shortserieswidth=\skip59
+\shorttitlewidth=\skip60
+\shortauthorwidth=\skip61
+\shorteditorwidth=\skip62
+\locallabelnumberwidth=\skip63
+\locallabelalphawidth=\skip64
+\localshorthandwidth=\skip65
+\localshortjournalwidth=\skip66
+\localshortserieswidth=\skip67
+\localshorttitlewidth=\skip68
+\localshortauthorwidth=\skip69
+\localshorteditorwidth=\skip70
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
+\c@textcitecount=\count371
+\c@textcitetotal=\count372
+\c@textcitemaxnames=\count373
+\c@biburlbigbreakpenalty=\count374
+\c@biburlbreakpenalty=\count375
+\c@biburlnumpenalty=\count376
+\c@biburlucpenalty=\count377
+\c@biburllcpenalty=\count378
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count379
+)
+Package biblatex Info: Trying to load bibliography style 'verbose-ibid'...
+Package biblatex Info: ... file 'verbose-ibid.bbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/bbx/verbose-ibid.bbx
+File: verbose-ibid.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'authortitle'...
+Package biblatex Info: ... file 'authortitle.bbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/bbx/authortitle.bbx
+File: authortitle.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count380
+\c@bbx:relatedtotal=\count381
+)))
+Package biblatex Info: Trying to load citation style 'verbose-ibid'...
+Package biblatex Info: ... file 'verbose-ibid.cbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/cbx/verbose-ibid.cbx
+File: verbose-ibid.cbx 2020/12/31 v3.16 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen140
+\Gin@req@width=\dimen141
+)
+(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-02-18 L3 programming layer (loader) 
+
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count382
+\l__pdf_internal_box=\box47
+))
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
+Package: lipsum 2021-03-03 v2.3 150 paragraphs of Lorem Ipsum dummy text
+
+(/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
+File: lipsum.ltd.tex 2021-03-03 v2.3 The Lorem ipsum dummy text
+))
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count383
+\Gm@cntv=\count384
+\c@Gm@tempcnt=\count385
+\Gm@bindingoffset=\dimen142
+\Gm@wd@mp=\dimen143
+\Gm@odd@mp=\dimen144
+\Gm@even@mp=\dimen145
+\Gm@layoutwidth=\dimen146
+\Gm@layoutheight=\dimen147
+\Gm@layouthoffset=\dimen148
+\Gm@layoutvoffset=\dimen149
+\Gm@dimlist=\toks18
+)
+(/usr/share/texmf-dist/tex/latex/koma-script/scrextend.sty
+Package: scrextend 2021/03/17 v3.33 KOMA-Script package (extend other classes w
+ith features of KOMA-Script classes)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2021/03/17 v3.33 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2021/03/17 v3.33 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2021/03/17 v3.33 KOMA-Script package (file load hooks)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2021/03/17 v3.33 KOMA-Script package (using LaTeX hooks)
+
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2021/03/17 v3.33 KOMA-Script package (logo)
+)))
+Skipping: [2021/05/01] Usage of raw option list on input line 252.
+Applying: [0000/00/00] compatibility for LaTeX before 2021/05/01 on input line 
+337.
+)))
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 10.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen150
+\Hy@linkcounter=\count386
+\Hy@pagecounter=\count387
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
+nguages
+)
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count388
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count389
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen151
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count390
+\Field@Width=\dimen152
+\Fld@charsize=\dimen153
+Package hyperref Info: Hyper figures OFF on input line 6075.
+Package hyperref Info: Link nesting OFF on input line 6080.
+Package hyperref Info: Hyper index ON on input line 6083.
+Package hyperref Info: backreferencing OFF on input line 6090.
+Package hyperref Info: Link coloring OFF on input line 6095.
+Package hyperref Info: Link coloring with OCG OFF on input line 6100.
+Package hyperref Info: PDF/A mode OFF on input line 6105.
+LaTeX Info: Redefining \ref on input line 6145.
+LaTeX Info: Redefining \pageref on input line 6149.
+
+(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count391
+\c@Item=\count392
+\c@Hfootnote=\count393
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-02-27 v7.00k Hyperref driver for pdfTeX
+
+(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+\Fld@listcount=\count394
+\c@bookmark@seq@number=\count395
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip71
+)
+(/usr/share/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count396
+\c@@ppsavesec=\count397
+\c@@ppsaveapp=\count398
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+
+
+Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
+(biblatex)                Loading 'csquotes' recommended.
+
+\@quotelevel=\count399
+\@quotereset=\count400
+(./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+ (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2020/12/31 v3.16 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2021-02-18 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
+Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
+)
+\openout3 = `main.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'main.bbl' not found.
+
+No file main.bbl.
+Package biblatex Info: Reference section=0 on input line 27.
+Package biblatex Info: Reference segment=0 on input line 27.
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count401
+\scratchdimen=\dimen154
+\scratchbox=\box48
+\nofMPsegments=\count402
+\nofMParguments=\count403
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count404
+\MPscratchDim=\dimen155
+\MPnumerator=\count405
+\makeMPintoPDFobject=\count406
+\everyMPtoPDFconversion=\toks20
+) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=674.33032pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=111.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=11.69997pt plus 5.19942pt minus 2.60054pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 27.
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count407
+)
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
+
+(./main.out) (./main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+Package epstopdf Info: Source file: <./graphics/logos/Logo_Université_Grenoble
+_Alpes_2020.eps>
+(epstopdf)                    date: 2021-12-11 16:43:01
+(epstopdf)                    size: 19385 bytes
+(epstopdf)             Output file: <./graphics/logos/Logo_Université_Grenoble
+_Alpes_2020-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-12-11 16:43:01
+(epstopdf)                    size: 7715 bytes
+(epstopdf)             Command: <repstopdf --outfile=./graphics/logos/Logo_Univ
+ersité_Grenoble_Alpes_2020-eps-converted-to.pdf ./graphics/logos/Logo_Universi
+té_Grenoble_Alpes_2020.eps>
+(epstopdf)             \includegraphics on input line 37.
+Package epstopdf Info: Output file is already uptodate.
+<./graphics/logos/Logo_Université_Grenoble_Alpes_2020-eps-converted-to.pdf, id
+=48, 111.41624pt x 68.255pt>
+File: ./graphics/logos/Logo_Université_Grenoble_Alpes_2020-eps-converted-to.pd
+f Graphic file (type pdf)
+<use ./graphics/logos/Logo_Université_Grenoble_Alpes_2020-eps-converted-to.pdf
+>
+Package pdftex.def Info: ./graphics/logos/Logo_Université_Grenoble_Alpes_2020-
+eps-converted-to.pdf  used on input line 37.
+(pdftex.def)             Requested size: 111.41597pt x 68.25482pt.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <22.46396> not available
+(Font)              size <20.74> substituted on input line 41.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <15.59996> not available
+(Font)              size <14.4> substituted on input line 43.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <22.46396> not available
+(Font)              size <20.74> substituted on input line 50.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <13> not available
+(Font)              size <12> substituted on input line 56.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <15.59996> not available
+(Font)              size <14.4> substituted on input line 56.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./graphics/logos/Logo_Univ
+ersité_Grenoble_Alpes_2020-eps-converted-to.pdf>]
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <32.34409> not available
+(Font)              size <29.86> substituted on input line 73.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <32.34409> not available
+(Font)              size <29.86> substituted on input line 73.
+
+[2
+
+] (./main.toc
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 4.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 4.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 4.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
+(Font)              size <12> substituted on input line 4.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
+(Font)              size <6> substituted on input line 4.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 4.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 4.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <13> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.09996> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6.5> on input line 4.
+)
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [1
+
+
+] [2
+
+]
+Chapter 1.
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <26.96207> not available
+(Font)              size <24.88> substituted on input line 88.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <26.96207> not available
+(Font)              size <24.88> substituted on input line 88.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <18.72003> not available
+(Font)              size <17.28> substituted on input line 91.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <18.72003> not available
+(Font)              size <17.28> substituted on input line 91.
+
+[3
+
+]
+
+LaTeX Font Warning: Font shape `T1/cmr/m/sl' in size <13> not available
+(Font)              size <12> substituted on input line 95.
+
+[4] [5] [6]
+Chapter 2.
+[7
+
+] [8] [9] [10] [11
+
+]
+Appendix A.
+[12
+
+] (./main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 2.48409pt have occurred.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 4BEC7D84DDBDD5DE76B772D1F039018C;1325.
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 17730 strings out of 478994
+ 297503 string characters out of 5864750
+ 1154494 words of memory out of 5000000
+ 34970 multiletter control sequences out of 15000+600000
+ 417023 words of font info for 50 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 111i,7n,116p,739b,1781s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts
+/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/c
+m-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx207
+4.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/cm-super/sfbx2986.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
+m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb>
+Output written on main.pdf (14 pages, 171354 bytes).
+PDF statistics:
+ 174 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
+

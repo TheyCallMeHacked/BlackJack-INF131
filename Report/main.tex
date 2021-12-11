@@ -1,0 +1,120 @@
+\documentclass[a4paper, twoside]{report}
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage[utf8]{inputenc} % Input encoding
+\usepackage[english]{babel} % Main language English
+\usepackage[backend=biber, style=verbose-ibid, sorting=nyt, citepages=omit]{biblatex} % For Bibliography
+\usepackage{graphicx} % For external graphics etc
+\usepackage{lipsum} % To generate Lorem Ipsums
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} % Margins and paging
+\usepackage[fontsize=13pt]{scrextend} % Bigger Font
+\usepackage{hyperref} % Clickable ToC and hyperlinks
+\usepackage{appendix} % Better Appendix formatting
+\raggedbottom 
+\pagestyle{headings}
+
+%\renewcommand{\appendixtocname}{Annexes} % Making sure the appendix' names are correctly translated
+%\renewcommand{\appendixpagename}{\appendixtocname}
+
+\usepackage{xcolor} % Use for custom colors, import it last because of collisions with other packages (eg. TikZ)
+
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\begin{document}
+\pagenumbering{roman}
+
+
+
+
+
+\begin{titlepage}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[keepaspectratio=true,scale=1.0]{./graphics/logos/Logo_Université_Grenoble_Alpes_2020.eps}
+\end{figure}
+
+\begin{center}
+    \LARGE{UNIVERSITY GRENOBLE ALPS}
+    \vspace{5mm}
+    \\ \large{Science and Technology Undergraduate Department}
+    \vspace{5mm}
+    \\ \LARGE{INF131 -- Computer Science Methods and Programming Techniques}
+\end{center}
+
+\vspace{15mm}
+\begin{center}
+    {\LARGE{\bf Project Report\\\vspace{5mm}Black Jack}}
+\end{center}
+\vspace{30mm}
+
+\begin{minipage}[t]{0.47\textwidth}
+	{\large{Supervising Teacher:}{\normalsize\vspace{3mm}
+	\bf\\ \large{Carole ADAM \vspace{2mm}\\ }}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\textwidth}\raggedleft
+	{\large{Authors:}{\normalsize\vspace{3mm}
+    \bf\\ \large{Alexandre KLEIN \vspace{2mm}\\Guillaume SALLOUM }}}
+\end{minipage}
+
+\vspace{30mm}
+\hrulefill
+\\\centering{\large{Year 2021/2022, Semester 1}}
+
+\end{titlepage}
+
+
+
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+
+    \lipsum[1]
+
+\clearpage
+
+{ \hypersetup{hidelinks} \tableofcontents \addcontentsline{toc}{section}{\numberline{}Contents} }
+
+\setcounter{page}{1}\pagenumbering{arabic}
+\chapter*{Abstract}
+\label{chap:abstract}
+\addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
+    \lipsum[1-2]
+
+\chapter{A First Chapter}
+
+    \lipsum[1]
+    \section{A Section}
+        \lipsum
+    \section{Another Section}
+        \lipsum
+
+\chapter{A Second Chapter}
+
+    \lipsum[1]
+    \section{A Section v2}
+        \lipsum
+    \section{Another Section Electric Boogaloo}
+        \lipsum
+
+
+
+
+
+
+\appendix
+\appendixpage
+\addappheadtotoc
+
+\chapter{An Appendix}
+
+
+
+
+
+
+\end{document}
