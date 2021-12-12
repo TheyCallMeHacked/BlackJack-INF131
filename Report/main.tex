@@ -38,7 +38,7 @@
 \end{figure}
 
 \begin{center}
-    \LARGE{UNIVERSITY GRENOBLE ALPS}
+    \LARGE{UNIVERSITY GRENOBLE ALPES}
     \vspace{5mm}
     \\ \large{Science and Technology Undergraduate Department}
     \vspace{5mm}
@@ -85,13 +85,30 @@
 \addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
     \lipsum[1-2]
 
-\chapter{A First Chapter}
+\chapter{Project Organization}
 
-    \lipsum[1]
-    \section{A Section}
-        \lipsum
-    \section{Another Section}
-        \lipsum
+    \section{Overview}
+        \par
+        We started the project by following the given instructions up to the end of Part B. 
+        However, after starting Part C and the following, we made significant differences to the rules in order to better 
+        follow the standard Blackjack rules.
+        To organize our code share and workflow, we used tools such as git and GitHub.\linebreak
+        The project has its own repository at the following url : \linebreak
+        https://github.com/TheyCallMeHacked/BlackJack-INF131
+        \linebreak
+        Moreover we made two versions of the project : a no GUI one, which plays inside the shell, and one with a GUI made with tkinter.
+    \section{File organization}
+        \par
+        The project code is divided in seven files, which contain each a given portion of how the game plays out. 
+        \begin{enumerate}
+            \item \textit{deck.py} handles the deck intialization and cards values (Part A1)
+            \item \textit{players.py} handles the players, humans as well as bots, behaviour (Parts A2 and B)
+            \item \textit{croupier.py} contains the specific functions for the croupier behaviour (Part C1 and C2)
+            \item \textit{gamemanagement.py} handles the round logic. It also has a no gui version. (Part B2-B4 and C3-C4) 
+            \item \textit{gui.py} handles the gui logic and display. (Part D)
+            \item \textit{main.py} handles the main game loop and displays end statistics for the players.
+        \end{enumerate}
+
 
 \chapter{A Second Chapter}
 
