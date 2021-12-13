@@ -1,16 +1,26 @@
 #!/bin/python
 
-import players as p
+#import players as p
 import deck as d
 #import game_management as gm
 from tkinter import *
 from tkinter import ttk
+
 import gui
 import sys
+from threading import Thread
 
 def main(argv, nogui=False):
     if nogui:
-        n = int(input("How many players will play? "))
+        n = ""
+        while type(n) != int:
+            try:
+                inp = int(input("How many players will play? "))
+            except ValueError:
+                pass
+            else:
+                if 0 < inp <= 5:
+                    n = inp
     else:
         root, casinoTable, uname, bal, score, bet = gui.generateGUI()
 
@@ -18,14 +28,15 @@ def main(argv, nogui=False):
             dlg.grab_release()
             dlg.destroy()
 
-        n = [0]
+        n = [1]
         def retrieve(*arg):
             try:
                 n[0] = int(n_player.get())
             except:
                 pass
             else:
-                dismiss()
+                if 0 < n[0] <= 5:
+                    dismiss()
 
         dlg = Toplevel(root)
         ttk.Label(dlg, text="Number of players:").grid(column=0, row=0, padx=5, pady=5)
@@ -42,23 +53,17 @@ def main(argv, nogui=False):
         dlg.wait_window()     # block until window is destroyed
 
         n = n[0]
-    if nogui:
-        root = []
+    
     if len(argv) > 1:
-        players = p.initPlayers(n, nogui, root, int(argv[1]))
+        players = p.initPlayers(n, root, int(argv[1]))
     else:
-        players = p.initPlayers(n, nogui, root)
-    playing = True
-    while playing:
-        deck = d.initStack(n)
-        if nogui:
-            gm.completeGame(players, deck)
-        else:
-            gm.completeGame(players, deck, {'root': root, 'table': casinoTable, 'uname': uname, 'bal':bal, 'score':score, 'bet':bet})
-        playing = input("replay? [y/N] ").lower() in ["yes", "y"]
-        if playing and players == {}:
-            print("No players have got money anymore, exiting.")
-            return
+        players = p.initPlayers(n, root)
+    deck = d.initStack(n)
+    
+    t = Thread(target=game, args=(players, deck, root, casinoTable, uname, bal, score, bet))
+    t.start()
+    root.mainloop()
+    t.join()
     
     form = f"┤ Recap for players that didn't go broke ├"
     print(f"{form:{'─'}^80s}" + "\b╮\r╭")
@@ -67,7 +72,17 @@ def main(argv, nogui=False):
         print(f"{form:{' '}<80s}" + "\b│")
     print(f"{'':{'─'}^80s}" + "\b╯\r╰")
 
-
+def game(players, deck, root, casinoTable, uname, bal, score, bet):
+    playing = True
+    while playing:
+        if nogui:
+            gm.completeGame(players, deck)
+        else:
+            gm.completeGame(players, deck, {'root': root, 'table': casinoTable, 'uname': uname, 'bal':bal, 'score':score, 'bet':bet})
+        playing = input("replay? [y/N] ").lower() in ["yes", "y"]
+        if playing and players == {}:
+            print("No players have got money anymore, exiting.")
+            return
 
 if __name__ == "__main__":
     nogui = "--no-gui" in sys.argv
@@ -77,7 +92,9 @@ if __name__ == "__main__":
             if a == "--no-gui":
                 argv.pop(i)
         import game_management_nogui as gm
+        import players_no_gui as p
     else:
         import game_management as gm
+        import players as p
 
     main(argv, nogui)

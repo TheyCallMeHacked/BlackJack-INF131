@@ -1,11 +1,30 @@
 from tkinter import *
 from tkinter import ttk
+from PIL import Image, ImageTk
+
+def hit(*arg):
+    global action
+    action = "h"
+
+def stand(*arg):
+    global action
+    action = "s"
+
+def double(*arg):
+    global action
+    action = "d"
+
+def getAction():
+    global action
+    out = action
+    action = ""
+    return out
 
 def generateGUI():
     # Generates the main window
     root = Tk()
     root.title("[INF131] Black Jack")
-    root.resizable(FALSE, FALSE)
+    #root.resizable(FALSE, FALSE)
 
     # Adds a frame for themed UI (tries to follow system theme, somewhat broken on Linux with the Xfce desktop environment)
     mainframe = ttk.Frame(root, padding="3 3 12 12")
@@ -14,7 +33,7 @@ def generateGUI():
     root.rowconfigure(0, weight=1)      # setup the frame to scale with the window vertically
 
     # Creates the canvas for the Casino Table
-    casinoTable = Canvas(mainframe, bg="green")
+    casinoTable = Canvas(mainframe, bg="green", width=1000, height=600)
     casinoTable.grid(column=0, row=0, sticky=(N, E, S, W))
 
     # Sets the user information panel up
@@ -36,12 +55,16 @@ def generateGUI():
     # Creates the buttons for the player actions
     playerActions = ttk.Frame(mainframe)
     playerActions.grid(column=0, row=1, sticky=(E, W), columnspan=2)
-    hit = ttk.Button(playerActions, text="Hit")
-    stand = ttk.Button(playerActions, text="Stand")
-    double = ttk.Button(playerActions, text="Double Down")
-    hit.pack(side=LEFT, fill=BOTH, expand=True)
-    stand.pack(side=LEFT, fill=BOTH, expand=True, padx=5)
-    double.pack(side=LEFT, fill=BOTH, expand=True)
+    hitButton = ttk.Button(playerActions, text="Hit", command=hit)
+    standButton = ttk.Button(playerActions, text="Stand", command=stand)
+    global doubleButton # has to be global to be able to deactivate it
+    doubleButton = ttk.Button(playerActions, text="Double Down", command=double)
+    hitButton.pack(side=LEFT, fill=BOTH, expand=True)
+    standButton.pack(side=LEFT, fill=BOTH, expand=True, padx=5)
+    doubleButton.pack(side=LEFT, fill=BOTH, expand=True)
+    # Add a string that stores the last button press
+    global action
+    action = ""
 
 
     for child in mainframe.winfo_children(): 
@@ -51,3 +74,45 @@ def generateGUI():
 
 #r,_,_,_,_,_ = generateGUI()
 #r.mainloop()
+
+def addCard(canvas, playerNum, totalPlayers, card, cardNum = 0):
+    
+    color = {"♥": "H", "♦": "D", "♣": "C", "♠": "S"}
+    global cards # has to be a global variable to not get garbage-collected (Damn you, Python!)
+
+    if not card == "back":
+        cardImage = Image.open('Cards/' + color[card[0]] + card[1:] + '.png')
+    else:
+        cardImage = Image.open('Cards/back.png')
+    cardWidth, cardHeight = cardImage.size
+    cardWidth, cardHeight = cardWidth//5, cardHeight//5
+    cardSize = (cardWidth, cardHeight)
+
+    # The position of the cards depends on the how-manieth player is playing and the total number of players. Player 0 is the croupier
+    canvasWidth, canvasHeight = canvas.winfo_width(), canvas.winfo_height()
+    placement = [[(canvasWidth//2 + cardNum*cardWidth//6, 10), (canvasWidth//2 + cardNum*cardWidth//6, canvasHeight-10)],
+                 [(canvasWidth//2 + cardNum*cardWidth//6, 10), (10 + cardNum*cardWidth//6, canvasHeight-10),  (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight-10)],
+                 [(canvasWidth//2 + cardNum*cardWidth//6, 10), (10 + cardNum*cardWidth//6, canvasHeight-10),  (canvasWidth//2 + cardNum*cardWidth//6, canvasHeight-10),  (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight-10)],
+                 [(canvasWidth//2 + cardNum*cardWidth//6, 10), (10 + cardNum*cardWidth//6, canvasHeight//2),  (10 + cardNum*cardWidth//6, canvasHeight-10),              (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight-10),    (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight//2)],
+                 [(canvasWidth//2 + cardNum*cardWidth//6, 10), (10 + cardNum*cardWidth//6, canvasHeight//2),  (10 + cardNum*cardWidth//6, canvasHeight-10),              (canvasWidth//2 + cardNum*cardWidth//6, canvasHeight-10),      (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight-10), (canvasWidth - cardNum*cardWidth//6 - 10, canvasHeight//2)]]
+    anchors = [["n", "s"],
+               ["n", "sw", "se"],
+               ["n", "sw", "s",  "se"],
+               ["n", "w",  "sw", "se", "e"],
+               ["n", "w",  "sw", "s",  "se", "e"]]
+    x, y = placement[totalPlayers - 1][playerNum]
+    anch = anchors[totalPlayers - 1][playerNum]
+
+    cards.append(ImageTk.PhotoImage(cardImage.resize(cardSize, Image.ANTIALIAS)))
+    canvas.create_image(x, y, image=cards[-1], anchor=anch)
+
+def resetTable():
+    global cards
+    cards = []
+
+
+def setCannotDouble():
+    doubleButton["state"] = "disabled"
+
+def setCanDouble():
+    doubleButton["state"] = "normal"

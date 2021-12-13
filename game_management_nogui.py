@@ -1,6 +1,6 @@
 import deck as d
 import players as p
-import croupier as c
+import croupier_no_gui as c
 
 def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
     prompt = "│Your action [hit, stand" + (", double down" if canDouble else "") + "]: "

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.25)  11 DEC 2021 16:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.25)  13 DEC 2021 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -776,28 +776,47 @@ LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <26.96207> not available
 
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <18.72003> not available
-(Font)              size <17.28> substituted on input line 91.
+(Font)              size <17.28> substituted on input line 90.
 
 
 LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <18.72003> not available
-(Font)              size <17.28> substituted on input line 91.
+(Font)              size <17.28> substituted on input line 90.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--100
+\T1/cmr/m/n/12 share and work-flow, we used tools such as git and GitHub.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--100
+\T1/cmr/m/n/12 The project has its own repos-i-tory at the fol-low-ing url :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--100
+\T1/cmr/m/n/12 https://github.com/TheyCallMeHacked/BlackJack-INF131
+ []
+
+
+LaTeX Font Warning: Font shape `T1/cmr/m/it' in size <13> not available
+(Font)              size <12> substituted on input line 104.
 
 [3
 
 ]
+Chapter 2.
+[4
+
+]
 
 LaTeX Font Warning: Font shape `T1/cmr/m/sl' in size <13> not available
-(Font)              size <12> substituted on input line 95.
+(Font)              size <12> substituted on input line 120.
 
-[4] [5] [6]
-Chapter 2.
-[7
-
-] [8] [9] [10] [11
+[5] [6] [7] [8
 
 ]
 Appendix A.
-[12
+[9
 
 ] (./main.aux)
 
@@ -805,17 +824,17 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.48409pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4BEC7D84DDBDD5DE76B772D1F039018C;1325.
+(rerunfilecheck)             Checksum: D97D486101BBBCBD3FB72F7702B541AC;1349.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17730 strings out of 478994
- 297503 string characters out of 5864750
- 1154494 words of memory out of 5000000
- 34970 multiletter control sequences out of 15000+600000
- 417023 words of font info for 50 fonts, out of 8000000 for 9000
+ 17736 strings out of 478994
+ 297554 string characters out of 5864750
+ 1154497 words of memory out of 5000000
+ 34972 multiletter control sequences out of 15000+600000
+ 417707 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  111i,7n,116p,739b,1781s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
@@ -826,11 +845,12 @@ m-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx207
 re/texmf-dist/fonts/type1/public/cm-super/sfbx2986.pfb></usr/share/texmf-dist/f
 onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
-m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb>
-Output written on main.pdf (14 pages, 171354 bytes).
+m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr
+/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on main.pdf (11 pages, 189713 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
  94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

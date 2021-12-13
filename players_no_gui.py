@@ -1,46 +1,19 @@
 # A2 - Players and scores
 
 import deck as d
-import gui as g
 from tkinter import *
 from tkinter import ttk
 
 # The players'scores are already given by initPlayer function so defining a "initScores" \
 # function is not necessary 
 
+# The CLI initPlayers still takes a(n unused) root parameter to make main.py shorter and easier to read
+
 def initPlayers(n, root = [], bal = 100):
     players = {}
 
-    def dismiss():
-            dlg.grab_release()
-            dlg.destroy()
-
-    name_var = [""]
-    def retrieve(*arg):
-        try:
-            name_var[0] = name_player.get()
-        except:
-            pass
-        else:
-            dismiss()
-
-
     for i in range(n):
-        dlg = Toplevel(root)
-        ttk.Label(dlg, text="Name of player " + str(i + 1) + ":").grid(column=0, row=0, padx=5, pady=5)
-        name_player = StringVar()
-        name_entry = ttk.Entry(dlg, textvariable=name_player)
-        name_entry.grid(column=1, row=0, padx=5, pady=5)
-        ttk.Button(dlg, text="Submit", command=retrieve).grid(column=0, row=1, columnspan=2, padx=5, pady=5)
-        dlg.protocol("WM_DELETE_WINDOW", dismiss) # intercept close button
-        dlg.transient(root)   # dialog window is related to main
-        dlg.wait_visibility() # can't grab until window appears, so we wait
-        dlg.grab_set()        # ensure all input goes to our window
-        name_entry.focus()
-        dlg.bind("<Return>", retrieve)
-        dlg.wait_window()     # block until window is destroyed
-
-        name = name_var[0]
+        name = input("Name of player " + str(i + 1) + ": ")
 
         players[name] = {
             'score'        : [],
@@ -53,12 +26,17 @@ def initPlayers(n, root = [], bal = 100):
     return players
 
 # By default the players' scores are initialized as null by "initPlayers" function
-def firstTurn(players, deck, table):
+def firstTurn(players, deck):
     flag = False
     for i, (name, player) in enumerate(players.items()):
+        form = f"┤ Round 1 ; Player: {name} ├"
+        if i == 0:
+            print(f"{form:{'─'}^80s}" + "\b╮\r╭")
+        else:
+            print(f"{form:{'─'}^80s}" + "\b┤\r├")
         c = d.drawCard(deck, len(players), 2)
-        g.addCard(table, i+1, len(players), c[0])
-        g.addCard(table, i+1, len(players), c[1], 1)
+        drawText = f"│{name}'s fist draw: {c[0]} {c[1]}"
+        print(f"{drawText:<80s}" + "\b│")
         player["hand"] = c
         player["score"][-1] = d.calcScore(player["hand"])
         flag = flag or (player["score"][-1] == 21)

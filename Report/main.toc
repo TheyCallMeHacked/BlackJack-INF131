@@ -7,18 +7,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\nameref {chap:abstract}}{2}{chapter*.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}A First Chapter}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Project Organization}{3}{chapter.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}A Section}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.1}Overview}{3}{section.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Another Section}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.2}File organization}{3}{section.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}A Second Chapter}{7}{chapter.2}%
+\contentsline {chapter}{\numberline {2}A Second Chapter}{4}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}A Section v2}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.1}A Section v2}{4}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Another Section Electric Boogaloo}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Another Section Electric Boogaloo}{6}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{12}{section*.4}%
+\contentsline {chapter}{Appendices}{9}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}An Appendix}{12}{appendix.A}%
+\contentsline {chapter}{\numberline {A}An Appendix}{9}{appendix.A}%

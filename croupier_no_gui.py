@@ -1,6 +1,4 @@
 import deck as d
-import gui as g
-from time import sleep
 
 def initCroupier():
     croupier = {
@@ -11,24 +9,28 @@ def initCroupier():
     }
     return croupier
 
-def firstTurn(croupier, deck, nPlayers, table):
+def firstTurn(croupier, deck, nPlayers):
     cards = d.drawCard(deck, nPlayers, 2)
     croupier["up"].append(cards[0])
     croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)
     croupier["down"] = cards[1]
     form = f"┤ Round 1 ; Croupier ├"
-    g.addCard(table, 0, nPlayers, "back", 1)
-    g.addCard(table, 0, nPlayers, cards[0])
+    print(f"{form:{'─'}^80s}" + "\b┤\r├")
+    drawText = f"│Croupier's first draw: {cards[0]} █"
+    print(f"{drawText:<80s}" + "\b│")
 
-def play(croupier, deck, nPlayers, table, root):
+def play(croupier, deck, nPlayers):
     stillPlaying = True
+    form = f"┤ Croupier's turn ├"
+    print(f"{form:{'─'}^80s}" + "\b┤\r├")    
 
-    g.addCard(table, 0, nPlayers, croupier["down"], 1)                           # showing the croupier's down card
-    croupier["up"].append(croupier["down"])                                      # adding it to the up cards
-    croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)      # adding it to the score
+    drawText = f"│Croupier's down card: {croupier['down']}"                              # showing the croupier's down card
+    print(f"{drawText:<80s}" + "\b│")
+    croupier["up"].append(croupier["down"])                                              # adding it to the up cards
 
-    root.update()
-    sleep(1)
+    croupier["score"], croupier["hard"] = d.calcScore(croupier["up"], True)              # adding it to the score
+
+    
     while stillPlaying:
 
         # Following Croupier Basic Strategy, as described in most croupier guides (only stand on hard 17 or higher):
@@ -52,5 +54,5 @@ def play(croupier, deck, nPlayers, table, root):
             stillPlaying = False
 
 
-    for i, card in enumerate(croupier["up"][2:]):                           # showing the croupier's hand
-        g.addCard(table, 0, nPlayers, card, i+2)
+    drawText = f"│Croupier's hand: {' '.join(croupier['up'])}"                           # showing the croupier's hand
+    print(f"{drawText:<80s}" + "\b│") 
