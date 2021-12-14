@@ -20,11 +20,9 @@ def playerAction(player, bet, canDouble): # Renamed continue() to playerAction()
                 action = ""
     else:                                  # Bot player action
         if player['strategy'] == 0:
-            action = random.randint(0, 2)  # Totally random strategy : no risk aversion
+            action = random.randint(0, 1)  # Totally random strategy : no risk aversion
             if action == 0:                # 0 is stand
                 return False
-            elif action == 1:              # 1 is double down
-                bet[0] *2
             else:
                 return True                # default is hit
 
@@ -62,7 +60,7 @@ def playerTurn(player, playerName, turnNumber, deck, nPlayers):
     print(f"{form:{'─'}^80s}" + "\b┤\r├")
     canDouble = (player["bet"][0]*2) <= player["balance"]
     con = playerAction(player, player["bet"], canDouble)
-    botActionString = f"|" + playerName + (" hits" if con == True else " stands") + "."
+    botActionString = "│" + playerName + (" hits." if con == True else " stands.")
     print(f"{botActionString:{' '}<80s}" + "\b│") 
     if con:
         c = d.drawCard(deck, nPlayers)[0]
@@ -98,26 +96,37 @@ def completeGame(players, deck):
         player["score"].append(0)
         player["stillPlaying"] = True
         sanitised = False
-        if player['isBot'] == False:                                                    # Manual bets apply to humans only
+        bal = player["balance"]
+        if player['isBot'] == False:                                                # Manual bets apply to humans only
             while not sanitised:
-                bal = player["balance"]
                 bet = input(f"{name}'s bet (balance: ${bal:.2f}): ").split('.')     # splitting the input in integer and decimal part
                 if len(bet) > 2 or len(bet) < 0:                                    # if there are more than two elements in the list, the input was not a valid real number
-                    print("Invalid value")
+                    print("Invalid value.")
                 else:                                                               # otherwise, the input sanitisation can continue
                     flag = True                                                     # test if all the inputed characters (excluding the decimal point) were digits
                     for i in ''.join(bet):
                         if i not in "0123456789":
                             flag = False
-                        if flag:                                                        # if it's the case, the input is finally sanitised and can be processed
-                            bet = float('.'.join(bet))
-                            if bet > bal or bet < 5:                                    # cannot bet more than you own or less than $5
-                                print("Invalid value")
-                            else:
-                                player["bet"] = [bet]
-                                sanitised = True
-                        else:                                                           # otherwise the input was not a valid number
-                            print("Invalid value")
+                    if flag:                                                        # if it's the case, the input is finally sanitised and can be processed
+                        bet = float('.'.join(bet))
+                        if bet > bal or bet < 5:                                    # cannot bet more than you own or less than $5
+                            print("Invalid value.")
+                        else:
+                            player["bet"] = [bet]
+                            sanitised = True
+                    else:                                                           # otherwise the input was not a valid number
+                        print("Invalid value.")
+    
+        else:
+            if player['balance'] > 0:                                                   # Bots first turn bets
+                if 0 < player['strategy'] <= 25:                                        # Small bet if using a using a low risk strategy
+                    player['bet'][0] = random.randint(0, 50)
+                elif player['strategy'] < 75:                                           # About half balance bets if using using a moderate risk strategy
+                    player['bet'][0] = random.randint(25, 75)
+                else:                                                                   # All in if using a high risk strategy
+                    player['bet'][0] = bal
+         
+                
 
     blackJack = p.firstTurn(players, deck)
     if blackJack:
@@ -141,7 +150,7 @@ def completeGame(players, deck):
             player["balance"] += player["bet"][0] + blackJack*0.5*player["bet"][0]
         else:
             player["balance"] -= player["bet"][0]
-            if player["balance"] == 0:
+            if player["balance"] <= 0:  # Since bots bets are randomized, balance can be negative, so the player needs to be added to broke in that case 
                 broke.append(name)
     for name in broke:
         del players[name]

@@ -2,9 +2,6 @@
 
 import deck as d
 
-# The players'scores are already given by initPlayer function so defining a "initScores" \
-# function is not necessary 
-
 def initPlayers(n, bal = 100):
     players = {}
     for i in range(n):
@@ -18,7 +15,7 @@ def initPlayers(n, bal = 100):
             'hand'         : [],
             'isBot'        : False
         }
-        isBot = input("Is " + name + " a human or a bot [H/b]? ").lower() in ["b", "bot"]
+        isBot = input("Is " + name + " a human or a bot [h/B]? ").lower() in ["b", "bot"]
         players[name]['isBot'] = isBot
         if players[name]['isBot'] == True:
             playfullness = False
@@ -40,6 +37,7 @@ def initPlayers(n, bal = 100):
 # By default the players' scores are initialized as null by "initPlayers" function
 def firstTurn(players, deck):
     flag = False
+    print()
     for i, (name, player) in enumerate(players.items()):
         botString = " ; Bot"
         humanString = " ; Human"
