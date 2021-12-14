@@ -53,10 +53,16 @@ def main(argv, nogui=False):
 
         n = n[0]
     
-    if len(argv) > 1:
-        players = p.initPlayers(n, root, int(argv[1]))
+    if nogui:
+        if len(argv) > 1:
+            players = p.initPlayers(n, int(argv[1]))
+        else:
+            players = p.initPlayers(n)
     else:
-        players = p.initPlayers(n, root)
+        if len(argv) > 1:
+            players = p.initPlayers(n, root, int(argv[1]))
+        else:
+            players = p.initPlayers(n, root)
     deck = d.initStack(n)
     
     if nogui:

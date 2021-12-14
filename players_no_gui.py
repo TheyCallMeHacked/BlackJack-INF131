@@ -9,7 +9,7 @@ from tkinter import ttk
 
 # The CLI initPlayers still takes a(n unused) root parameter to make main.py shorter and easier to read
 
-def initPlayers(n, root = [], bal = 100):
+def initPlayers(n, bal = 100):
     players = {}
 
     for i in range(n):

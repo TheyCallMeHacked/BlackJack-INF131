@@ -1,5 +1,5 @@
 import deck as d
-import players as p
+import players_no_gui as p
 import croupier_no_gui as c
 
 def playerAction(bet, canDouble): # Renamed continue() to playerAction() because continue is a key-word. Also added 
