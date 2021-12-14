@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.25)  13 DEC 2021 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.25)  14 DEC 2021 14:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -662,11 +662,11 @@ LaTeX Info: Redefining \nameref on input line 27.
 
 Package epstopdf Info: Source file: <./graphics/logos/Logo_Université_Grenoble
 _Alpes_2020.eps>
-(epstopdf)                    date: 2021-12-11 16:43:01
+(epstopdf)                    date: 2021-12-13 13:59:04
 (epstopdf)                    size: 19385 bytes
 (epstopdf)             Output file: <./graphics/logos/Logo_Université_Grenoble
 _Alpes_2020-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-12-11 16:43:01
+(epstopdf)                    date: 2021-12-13 13:59:04
 (epstopdf)                    size: 7715 bytes
 (epstopdf)             Command: <repstopdf --outfile=./graphics/logos/Logo_Univ
 ersité_Grenoble_Alpes_2020-eps-converted-to.pdf ./graphics/logos/Logo_Universi
@@ -782,6 +782,15 @@ LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <18.72003> not available
 LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <18.72003> not available
 (Font)              size <17.28> substituted on input line 90.
 
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
+7.
+(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 97.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 92--100
 \T1/cmr/m/n/12 share and work-flow, we used tools such as git and GitHub.
@@ -794,7 +803,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--100
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 92--100
-\T1/cmr/m/n/12 https://github.com/TheyCallMeHacked/BlackJack-INF131
+[][]$\T1/cmtt/m/n/12 https : / / github . com / TheyCallMeHacked / BlackJack-[]
+INF131$[][]
  []
 
 
@@ -830,11 +840,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17736 strings out of 478994
- 297554 string characters out of 5864750
+ 17759 strings out of 478994
+ 298197 string characters out of 5864750
  1154497 words of memory out of 5000000
- 34972 multiletter control sequences out of 15000+600000
- 417707 words of font info for 51 fonts, out of 8000000 for 9000
+ 34991 multiletter control sequences out of 15000+600000
+ 418020 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  111i,7n,116p,739b,1781s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
@@ -846,11 +856,12 @@ re/texmf-dist/fonts/type1/public/cm-super/sfbx2986.pfb></usr/share/texmf-dist/f
 onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
 m2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr
-/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on main.pdf (11 pages, 189713 bytes).
+/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-di
+st/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (11 pages, 218650 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 176 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
  29 named destinations out of 1000 (max. 500000)
  94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
