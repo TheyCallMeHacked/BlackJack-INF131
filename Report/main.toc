@@ -1,24 +1,20 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {english}{}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Acknowledgements}{ii}{chapter*.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Contents}{1}{chapter*.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nameref {chap:abstract}}{2}{chapter*.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Project Organization}{3}{chapter.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Overview}{3}{section.1.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}File organization}{3}{section.1.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}A Second Chapter}{4}{chapter.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}A Section v2}{4}{section.2.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Another Section Electric Boogaloo}{6}{section.2.2}%
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{9}{section*.4}%
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}An Appendix}{9}{appendix.A}%
+\babel@toc {english}{}\relax 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Contents}{ii}{chapter*.1}%
+\contentsline {section}{\hbox to\@tempdima {\hfil }Prerequisites}{iii}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Project Organization}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Overview}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}File organization}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Development process}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Rules}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Implementations}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Cards deck}{3}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Players and scores}{3}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Player's turn}{3}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}A complete game}{4}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Main program}{4}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Bets}{4}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}The croupier}{4}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.8}The other players}{4}{subsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.2.9}The GUI}{4}{subsection.2.2.9}%
+\contentsline {chapter}{Appendices}{7}{section*.3}%
+\contentsline {chapter}{\numberline {A}Card Files}{7}{appendix.A}%

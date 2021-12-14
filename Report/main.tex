@@ -2,13 +2,16 @@
 \usepackage[T1]{fontenc} % Font encoding
 \usepackage[utf8]{inputenc} % Input encoding
 \usepackage[english]{babel} % Main language English
-\usepackage[backend=biber, style=verbose-ibid, sorting=nyt, citepages=omit]{biblatex} % For Bibliography
+%\usepackage[backend=biber, style=verbose-ibid, sorting=nyt, citepages=omit]{biblatex} % For Bibliography
 \usepackage{graphicx} % For external graphics etc
 \usepackage{lipsum} % To generate Lorem Ipsums
+\usepackage{fdsymbol} % For special symbols
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm]{geometry} % Margins and paging
 \usepackage[fontsize=13pt]{scrextend} % Bigger Font
 \usepackage{hyperref} % Clickable ToC and hyperlinks
 \usepackage{appendix} % Better Appendix formatting
+\usepackage{indentfirst} % First paragraph indentation
+\usepackage{pgffor}
 \raggedbottom 
 \pagestyle{headings}
 
@@ -68,22 +71,20 @@
 \end{titlepage}
 
 
+{ \hypersetup{hidelinks} \tableofcontents \addcontentsline{toc}{section}{\numberline{}Contents} }
 
 
-\chapter*{Acknowledgements}
-\addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+\chapter*{Prerequisites}
+\addcontentsline{toc}{section}{\numberline{}Prerequisites}
 
-    \lipsum[1]
+    This game depends on \texttt{tkinter} and \texttt{pillow}.
+    In order to run it, either double click \textit{main.py} from a file explorer (you might have to set it to run with Python), or run
+    \texttt{./main.py} from a shell.
+    
 
 \clearpage
 
-{ \hypersetup{hidelinks} \tableofcontents \addcontentsline{toc}{section}{\numberline{}Contents} }
-
 \setcounter{page}{1}\pagenumbering{arabic}
-\chapter*{Abstract}
-\label{chap:abstract}
-\addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
-    \lipsum[1-2]
 
 \chapter{Project Organization}
 
@@ -96,27 +97,94 @@
         The project has its own repository at the following url : \linebreak
         \url{https://github.com/TheyCallMeHacked/BlackJack-INF131}
         \linebreak
-        Moreover we made two versions of the project : a no GUI one, which plays inside the shell, and one with a GUI made with tkinter.
+        Moreover we made two versions of the game : a CLI one, which plays inside the shell and which can be started with the \texttt{-{}-no-gui} command line argument, and one with a GUI made with \texttt{tkinter}.
     \section{File organization}
         \par
-        The project code is divided in seven files, which contain each a given portion of how the game plays out. 
+        The project code is divided in nine files, which contain each a given portion of how the game plays out. 
         \begin{enumerate}
             \item \textit{deck.py} handles the deck intialization and cards values (Part A1)
             \item \textit{players.py} handles the players, humans as well as bots, behaviour (Parts A2 and B)
             \item \textit{croupier.py} contains the specific functions for the croupier behaviour (Part C1 and C2)
-            \item \textit{gamemanagement.py} handles the round logic. It also has a no gui version. (Part B2-B4 and C3-C4) 
+            \item \textit{game\_management.py} handles the round logic. (Part B2-B4 and C3-C4) 
             \item \textit{gui.py} handles the gui logic and display. (Part D)
             \item \textit{main.py} handles the main game loop and displays end statistics for the players.
         \end{enumerate}
 
+        Additionally, there are three files that handle the CLI version : \textit{croupier\_no\_gui.py}, \textit{game\_management\_nogui.py}, and \textit{player\_no\_gui.py}.
 
-\chapter{A Second Chapter}
 
-    \lipsum[1]
-    \section{A Section v2}
-        \lipsum
-    \section{Another Section Electric Boogaloo}
-        \lipsum
+
+\chapter{Development process}
+
+    \section{Rules}
+
+        In order to more closely follow commonly played blackjack, we decided to use standard casino rules. This means our ruleset is the following :
+        \begin{itemize}
+            \item At the beginning of the game, and after having set an initial bet, each player gets two cards drawn. If their scores (which will be explained below) reaches exactly 21 -- they have a ``blackjack'' -- and the game stops.
+            \item If no player has a blackjack, the croupier draws two cards, one of which is turned back-up (called a down card).
+            \item After that the player has three options : hit, stand or double down. 
+            \begin{itemize}
+                \item Hit : the player gets another card drawn
+                \item Stand : the player gets no more card drawn and freezes their score
+                \item Double Down : if the player can, their bet is doubled and they get another card drawn
+            \end{itemize}
+            \item If a player's score surpasses 21 (aka they ``busted''), the player automatically loses.
+            \item Scores are calculated as follows : the rank of each card is added; court cards have a value of ten, and for aces, their value is 21 as long as the total score is below 21 (``soft ace''), 1 otherwise (``hard ace'').
+            \item Finally, when all players either stand or have lost, the croupier shows his down card and draws card until they reach or surpass a ``hard seventeen''.
+            \item There are two win conditions : either if the croupier busts, or if the player's score surpasses the croupier's.
+        \end{itemize}
+
+    \section{Implementations}
+
+        \subsection{Cards deck}
+            Instead of the recommended ``<rank> of <suit>'' format, we preferred to have a shorter format including only the rank's abbreviation preceded by the suit's symbol (eg. ``$\clubsuit$2'' or ``$\heartsuit$K''). All cards are generated once by combining each suit with each card using two nested for-loops.
+            \par The card's value is calculated by stripping the suit from the card, handling the ranks that have letters as abbreviation, and finally handling the pip cards.
+            %\par We also added a \texttt{score()} function that uses the card
+            \par The stack is initialised using as many decks as there are players (max 5) that are shuffled using the \texttt{random} module.
+            \par \texttt{drawCard} checks if the stack is all used up, reinitialises it as needed, and \texttt{pop}s as many cards as needed from it.
+
+        \subsection{Players and scores}
+            Because of an initial misunderstanding of the instructions, we initially created a single dictionary containing all players, themselves being dictionaries containing all thier associated data. After some thought, we realised that this had the advantage of needing to only worry about one object instead of six, at the expense of memory.
+            As we considered the advantage to outweigh the cost, we decided to keep this data structure.
+            \par Therefore, \texttt{initPlayers} generates this player dictionnary by associating each name prompted for to the user (the key) to a dictionnary, itself initialised with the default values. 
+            \par \texttt{initScores} was scrapped as it was already a part of \texttt{initPlayers}.
+            \par We created a funtion \texttt{calcScore} in \textit{deck.py} that returns a hand's score, taking into account hard and soft aces.
+            \par \texttt{firstTurn} draws two cards for each player, calculates the associated score and flags if there is a blackjack.
+            \par \texttt{winner} compares each score with the croupier's to determine which players won, if any.
+
+        \subsection{Player's turn}
+            \texttt{continue} has been renamed to \texttt{playerAction} because continue is already a Python keyword. Additionally, the function adapts depending on the ability of the current player to double down, to prompt them for the available actions.
+            \par \texttt{playerTurn} gets the player's action (notifying to \texttt{playerAction} if the player can double down) and draws a card if required and updates the player's score. Instead of removing players from the dictionary, \texttt{playerTurns} unsets the player's \texttt{stillPlaying} flag.
+        
+        \subsection{A complete game}    
+            \texttt{gameTurn} loops over all the players that have the \texttt{stillPlaying} flag set to run the player turn.
+            \par \texttt{gameOver} checks if all the players have \texttt{stillPlaying} set, and returns True if so.
+            \par \texttt{completeGame} is implemented as descirbed in the instructions.
+
+        \subsection{Main program}
+            \par \textit{main.py} follows the classic \texttt{if \_\_name\_\_ == ``\_\_main\_\_''} format.
+            \par \texttt{main} prompts for and initialises the required variables, before calling \texttt{completeGame} in a while-loop the break condition of which is prompted to the player, asking if they want to replay.
+
+        \subsection{Bets}
+            \par Bets are integrated into \texttt{initPlayers}. It is an array in order to be able to modify it from \texttt{playerAction}.
+
+        \subsection{The croupier}
+            In order to more closely follow the standard blackjack rules, the croupier was not coded to play like a normal player, but instead to play at the end of the game.
+            \par They still draw the up and down card at the beginning in their own \texttt{firstTurn}.
+            \par The croupier's equivalent of \texttt{gameTurn} is \texttt{play}, which shows the down card and draws until they reach a hard seventeen.
+        
+        \subsection{The other players}
+            The automated have been added in the \texttt{no-gui} branch of the git repository, in order to not disturb the GUI development.
+            \par Automated and non-automated players are separated by a \texttt{Human} or \texttt{Bot} flag.
+            \par The bots' risk aversion is roughly proportionnal to their ``playfullness'' percentage.
+            \par So the given strategies are more or less followed.
+
+        \subsection{The GUI}
+            To generate a GUI, we used Tcl/Tk through the \texttt{tkinter} module. The \texttt{generateGUI} function creates a Tk instance that is set up to have labels for player information, a canvas as the casino table, and buttons for the player actions.
+            \par Because of the interrupt based nature of Tcl/Tk, the program needs multithreading to have neither the GUI, nor the game halted. The GUI runs on the main thread, and \texttt{main} creates a parallel daemon thread for the game logic, that is killed when the main window is closed.
+            \par For player input, we used dialog windows with a textual input, always called \texttt{dlg} (short for dialog).
+            \par When the \texttt{-{}-no-gui} command line argument is set, \textit{main.py} imports the -no-gui versions of some files instread of the latter.
+            \par The image files used for the GUI (included in \nameref{appdx:cards}) are imported using \texttt{pillow} in order to resize them as needed.
 
 
 
@@ -127,8 +195,16 @@
 \appendixpage
 \addappheadtotoc
 
-\chapter{An Appendix}
-
+\chapter{Card Files}
+\label{appdx:cards}
+\begin{center}
+    \foreach \rank in {A,2,3,4,5,6,7,8,9,10,J,Q,K} {
+        \vspace{0.5cm}\foreach \suit in {C,S,H,D} {
+            \includegraphics[scale=0.35]{../Cards/\suit\rank.png}
+        } \\
+    }
+    \vspace{0.5cm}\includegraphics[scale=0.6]{../Cards/back.png}
+\end{center}
 
 
 
