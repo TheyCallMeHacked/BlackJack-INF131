@@ -100,7 +100,6 @@ def game(players, deck, root, casinoTable, uname, bal, score, bet):
         form += "\nReplay ?"
         playing = messagebox.askyesno(title="Replay?", message=form)
         if playing and players == {}:
-            print("No players have got money anymore, exiting.")
             playing = False
     gui.recap(players, root)
     sleep(0.1)
