@@ -73,7 +73,7 @@ def gameOver(players):
 # d: the deck of cards
 def completeGame(players, deck, gui):
     root, table, _,_,_,_ = list(gui.values())
-    g.resetTable(players, table)
+    g.resetTable()
     g.placeNames(players, table)
 
     croupier = c.initCroupier()
@@ -137,7 +137,7 @@ def completeGame(players, deck, gui):
             if player["balance"] == 0:
                 broke.append(name)
     if broke:
-        g.resetTable(players, table)
+        g.resetNames(players, table)
         for name in broke:
             del players[name]
 

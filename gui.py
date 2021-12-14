@@ -107,9 +107,11 @@ def addCard(canvas, playerNum, totalPlayers, card, cardNum = 0):
     cards.append(ImageTk.PhotoImage(cardImage.resize(cardSize, Image.ANTIALIAS)))
     canvas.create_image(x, y, image=cards[-1], anchor=anch)
 
-def resetTable(players, canvas):
+def resetTable():
     global cards
     cards = []
+
+def resetNames(players, canvas):
     for name, player in players.items():
         canvas.itemconfigure(player["name"], text="")
 
