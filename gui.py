@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+from time import sleep
 
 def hit(*arg):
     global action
@@ -116,3 +117,20 @@ def setCannotDouble():
 
 def setCanDouble():
     doubleButton["state"] = "normal"
+
+
+def recap(players, root):
+    def dismiss ():
+        dlg.grab_release()
+        dlg.destroy()
+
+    dlg = Toplevel(root)
+    ttk.Label(dlg, font=25, text="Recap:").pack(side=TOP, pady=5)
+    for name, player in players.items():
+        ttk.Label(dlg, text=f"{name} won {player['wins']} game{'' if player['wins'] == 1 else 's'} out of {len(player['score'])} with a final balance of ${player['balance']:.2f}").pack(padx=10, pady=5)
+    ttk.Button(dlg, text="OK", command=dismiss).pack(pady=5)
+    dlg.protocol("WM_DELETE_WINDOW", dismiss) # intercept close button
+    dlg.transient(root)   # dialog window is related to main
+    sleep(0.1)#dlg.wait_visibility() # can't grab until window appears, so we wait
+    dlg.grab_set()        # ensure all input goes to our window
+    dlg.wait_window()     # block until window is destroyed

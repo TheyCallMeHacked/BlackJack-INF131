@@ -4,11 +4,12 @@
 import deck as d
 #import game_management as gm
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 import gui
 import sys
 from threading import Thread
+from time import sleep
 
 def main(argv, nogui=False):
     if nogui:
@@ -60,29 +61,46 @@ def main(argv, nogui=False):
         players = p.initPlayers(n, root)
     deck = d.initStack(n)
     
-    t = Thread(target=game, args=(players, deck, root, casinoTable, uname, bal, score, bet))
-    t.start()
-    root.mainloop()
-    t.join()
-    
-    form = f"┤ Recap for players that didn't go broke ├"
-    print(f"{form:{'─'}^80s}" + "\b╮\r╭")
-    for name, player in players.items():
-        form = f"│{name} won {player['wins']} game{'' if player['wins'] == 1 else 's'} out of {len(player['score'])} with a final balance of ${player['balance']:.2f}"
-        print(f"{form:{' '}<80s}" + "\b│")
-    print(f"{'':{'─'}^80s}" + "\b╯\r╰")
+    if nogui:
+        playing = True
+        while playing:
+            gm.completeGame(players, deck)
+            playing = input("replay? [y/N] ").lower() in ["yes", "y"]
+            if playing and players == {}:
+                print("No players have got money anymore, exiting.")
+                playing = False
 
+
+        form = f"┤ Recap for players that didn't go broke ├"
+        print(f"{form:{'─'}^80s}" + "\b╮\r╭")
+        for name, player in players.items():
+            form = f"│{name} won {player['wins']} game{'' if player['wins'] == 1 else 's'} out of {len(player['score'])} with a final balance of ${player['balance']:.2f}"
+            print(f"{form:{' '}<80s}" + "\b│")
+        print(f"{'':{'─'}^80s}" + "\b╯\r╰")
+    else:
+        t = Thread(target=game, args=(players, deck, root, casinoTable, uname, bal, score, bet))
+        t.start()
+        root.mainloop()
+        t.join(timeout=0.1)
+
+    
 def game(players, deck, root, casinoTable, uname, bal, score, bet):
     playing = True
     while playing:
-        if nogui:
-            gm.completeGame(players, deck)
+        winners, blackJack = gm.completeGame(players, deck, {'root': root, 'table': casinoTable, 'uname': uname, 'bal':bal, 'score':score, 'bet':bet})
+        if len(winners):
+            form = f"Game Over : {', '.join(winners)} won the game {'with a Black Jack ' if blackJack else ''}against the house"
         else:
-            gm.completeGame(players, deck, {'root': root, 'table': casinoTable, 'uname': uname, 'bal':bal, 'score':score, 'bet':bet})
-        playing = input("replay? [y/N] ").lower() in ["yes", "y"]
+            form = f"Game Over : All players lost to the house"
+        form += "\nReplay ?"
+        playing = messagebox.askyesno(title="Replay?", message=form)
         if playing and players == {}:
             print("No players have got money anymore, exiting.")
-            return
+            playing = False
+    gui.recap(players, root)
+    sleep(0.1)
+    root.destroy()
+    return
 
 if __name__ == "__main__":
     nogui = "--no-gui" in sys.argv

@@ -2,8 +2,10 @@ import deck as d
 import players as p
 import croupier as c
 import gui as g
+
 from tkinter import *
 from tkinter import ttk
+from time import sleep
 
 def playerAction(bet, canDouble, root): # Renamed continue() to playerAction() because continue is a key-word. Also added possibility to double down
     if not canDouble:
@@ -98,7 +100,7 @@ def completeGame(players, deck, gui):
         ttk.Button(dlg, text="Submit", command=retrieve).grid(column=0, row=1, columnspan=2, padx=5, pady=5)
         dlg.protocol("WM_DELETE_WINDOW", dismiss) # intercept close button
         dlg.transient(root)   # dialog window is related to main
-        dlg.wait_visibility() # can't grab until window appears, so we wait
+        sleep(0.1)# dlg.wait_visibility() # can't grab until window appears, so we wait
         dlg.grab_set()        # ensure all input goes to our window
         bet_entry.focus()
         dlg.bind("<Return>", retrieve)
@@ -133,9 +135,4 @@ def completeGame(players, deck, gui):
     for name in broke:
         del players[name]
 
-    if len(winners):
-        form = f"┤ Game Over ; {', '.join(winners)} won the game {'with a Black Jack ' if blackJack else ''}against the house ├"
-    else:
-        form = f"┤ Game Over ; All players lost to the house ├"
-
-    print(f"{form:{'─'}^80s}" + "\b╯\r╰")
+    return winners, blackJack
