@@ -125,7 +125,7 @@ def recap(players, root):
         dlg.destroy()
 
     dlg = Toplevel(root)
-    ttk.Label(dlg, font=25, text="Recap:").pack(side=TOP, pady=5)
+    ttk.Label(dlg, font=25, text="Recap (only players who didn't go broke):").pack(side=TOP, pady=5)
     for name, player in players.items():
         ttk.Label(dlg, text=f"{name} won {player['wins']} game{'' if player['wins'] == 1 else 's'} out of {len(player['score'])} with a final balance of ${player['balance']:.2f}").pack(padx=10, pady=5)
     ttk.Button(dlg, text="OK", command=dismiss).pack(pady=5)
@@ -134,3 +134,23 @@ def recap(players, root):
     sleep(0.1)#dlg.wait_visibility() # can't grab until window appears, so we wait
     dlg.grab_set()        # ensure all input goes to our window
     dlg.wait_window()     # block until window is destroyed
+
+def placeNames(players, canvas):
+    # Positionning of names is similar to cards, except croupier has no name shown.
+    nPlayers = len(players)
+    canvasWidth, canvasHeight = canvas.winfo_width(), canvas.winfo_height()
+    placement = [[(canvasWidth//2, canvasHeight-10-120)],
+                 [(10, canvasHeight-10-120),  (canvasWidth - 10, canvasHeight-10-120)],
+                 [(10, canvasHeight-10-120),  (canvasWidth//2, canvasHeight-10-120),  (canvasWidth - 10, canvasHeight-10-120)],
+                 [(10, canvasHeight//2-70),  (10, canvasHeight-10-120),              (canvasWidth - 10, canvasHeight-10-120),    (canvasWidth - 10, canvasHeight//2-70)],
+                 [(10, canvasHeight//2-70),  (10, canvasHeight-10-120),              (canvasWidth//2, canvasHeight-10-120),      (canvasWidth - 10, canvasHeight-10-120), (canvasWidth - 10, canvasHeight//2-70)]]
+    anchors = [["s"],
+               ["sw", "se"],
+               ["sw", "s",  "se"],
+               ["w",  "sw", "se", "e"],
+               ["w",  "sw", "s",  "se", "e"]]
+    
+    for i, (name, player) in enumerate(players.items()):
+        x, y = placement[nPlayers - 1][i]
+        anch = anchors[nPlayers - 1][i]
+        player["name"] = canvas.create_text(x, y, anchor=anch, text=name, fill="white", font=25)

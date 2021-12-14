@@ -1,12 +1,10 @@
 #!/bin/python
 
-#import players as p
 import deck as d
-#import game_management as gm
+import gui
 from tkinter import *
 from tkinter import ttk, messagebox
 
-import gui
 import sys
 from threading import Thread
 from time import sleep
@@ -78,10 +76,11 @@ def main(argv, nogui=False):
             print(f"{form:{' '}<80s}" + "\b│")
         print(f"{'':{'─'}^80s}" + "\b╯\r╰")
     else:
-        t = Thread(target=game, args=(players, deck, root, casinoTable, uname, bal, score, bet))
+        t = Thread(target=game, args=(players, deck, root, casinoTable, uname, bal, score, bet), daemon=True)
         t.start()
         root.mainloop()
-        t.join(timeout=0.1)
+        t.join(timeout=1)
+        sys.exit()
 
     
 def game(players, deck, root, casinoTable, uname, bal, score, bet):

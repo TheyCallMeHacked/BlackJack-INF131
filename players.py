@@ -26,6 +26,7 @@ def initPlayers(n, root = [], bal = 100):
 
 
     for i in range(n):
+        name_var = [f"Player {i+1}"]
         dlg = Toplevel(root)
         ttk.Label(dlg, text="Name of player " + str(i + 1) + ":").grid(column=0, row=0, padx=5, pady=5)
         name_player = StringVar()
@@ -48,7 +49,8 @@ def initPlayers(n, root = [], bal = 100):
             'balance'      : bal,
             'stillPlaying' : True,
             'bet'          : [0],
-            'hand'         : []
+            'hand'         : [],
+            'name'         : []
         }
     return players
 

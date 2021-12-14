@@ -38,6 +38,7 @@ def playerTurn(player, playerName, playerNum, turnNumber, deck, nPlayers, gui):
     balText.set(f"${player['balance']:.2f}")
     scoreText.set(score)
     betText.set(f"${player['bet'][0]:.2f}")
+    casinoTable.itemconfigure(player["name"], fill="orange")
     
     canDouble = (player["bet"][0]*2) <= player["balance"]
     con = playerAction(player["bet"], canDouble, root)
@@ -48,8 +49,10 @@ def playerTurn(player, playerName, playerNum, turnNumber, deck, nPlayers, gui):
         player["score"][-1] = d.calcScore(player["hand"])
         if player["score"][-1] >= 21:
             player["stillPlaying"] = False
-        return
-    player["stillPlaying"] = False
+    else:
+        player["stillPlaying"] = False
+    
+    casinoTable.itemconfigure(player["name"], fill="white")
 
 # @ param
 # player: the player object
@@ -71,6 +74,7 @@ def gameOver(players):
 def completeGame(players, deck, gui):
     root, table, _,_,_,_ = list(gui.values())
     g.resetTable()
+    g.placeNames(players, table)
 
     croupier = c.initCroupier()
     for name,player in players.items():
@@ -89,7 +93,7 @@ def completeGame(players, deck, gui):
             except:
                 pass
             else:
-                if 0 < bet[0] <= bal:
+                if 5 <= bet[0] <= bal:
                     dismiss()
 
         dlg = Toplevel(root)
