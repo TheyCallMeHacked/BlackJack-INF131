@@ -139,4 +139,4 @@ versions of some files instread of the latter.
   The image files used for the GUI (included in Card Files) are imported using
 pillow in order to resize them as needed.
   
-![Ace of clubs](./Cards/CA.png?width=50%) ![Ace of spades](./Cards/SA.png?width=50%) ![Ace of hearts](./Cards/HA.png?width=50%) ![Ace of diamonds](./Cards/DA.png?width=50%)
+![Ace of clubs](./Cards/CA.png) ![Ace of spades](./Cards/SA.png) ![Ace of hearts](./Cards/HA.png) ![Ace of diamonds](./Cards/DA.png)
