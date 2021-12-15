@@ -139,4 +139,4 @@ versions of some files instread of the latter.
   The image files used for the GUI (included in Card Files) are imported using
 pillow in order to resize them as needed.
   
-![./Cards/CA]
+![Ace of clubs](./Cards/CA.png)
