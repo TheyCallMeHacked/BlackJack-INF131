@@ -46,7 +46,7 @@ score surpasses the croupier’s.
 ### Implementations
 #### Cards deck
 
-  Instead of the recommended “<rank> of <suit>” format, we preferred to have a
+  Instead of the recommended “rank of suit” format, we preferred to have a
 shorter format including only the rank’s abbreviation preceded by the suit’s symbol
 (eg. “♣2” or “♡K”). All cards are generated once by combining each suit with each
 card using two nested for-loops.
