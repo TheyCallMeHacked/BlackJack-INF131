@@ -54,7 +54,7 @@ card using two nested for-loops.
 ranks that have letters as abbreviation, and finally handling the pip cards.
   The stack is initialised using as many decks as there are players (max 5) that are
 shuffled using the random module.
-  drawCard checks if the stack is all used up, reinitialises it as needed, and pops as
+  `drawCard` checks if the stack is all used up, reinitialises it as needed, and pops as
 many cards as needed from it.
   
   
@@ -66,53 +66,53 @@ thier associated data. After some thought, we realised that this had the advanta
 of needing to only worry about one object instead of six, at the expense of memory.
   As we considered the advantage to outweigh the cost, we decided to keep this data
 structure.
-  Therefore, initPlayers generates this player dictionnary by associating each
+  Therefore, `initPlayers` generates this player dictionnary by associating each
 name prompted for to the user (the key) to a dictionnary, itself initialised with the
 default values.
-initScores was scrapped as it was already a part of initPlayers.
-  We created a funtion calcScore in deck.py that returns a hand’s score, taking
+`initScores` was scrapped as it was already a part of initPlayers.
+  We created a funtion `calcScore` in _deck.py_ that returns a hand’s score, taking
 into account hard and soft aces.
-  firstTurn draws two cards for each player, calculates the associated score and
+  `firstTurn` draws two cards for each player, calculates the associated score and
 flags if there is a blackjack.
-  winner compares each score with the croupier’s to determine which players won,
+  `winner` compares each score with the croupier’s to determine which players won,
 if any.
   
 #### Player's turn
   
-  continue has been renamed to playerAction because continue is already a
+  `continue` has been renamed to `playerAction` because `continue` is already a
 Python keyword. Additionally, the function adapts depending on the ability of
 the current player to double down, to prompt them for the available actions.
-  playerTurn gets the player’s action (notifying to playerAction if the player
+  `playerTurn` gets the player’s action (notifying to `playerAction` if the player
 can double down) and draws a card if required and updates the player’s score.
-Instead of removing players from the dictionary, playerTurns unsets the player’s
-stillPlaying flag.
+Instead of removing players from the dictionary, `playerTurns` unsets the player’s
+`stillPlaying` flag.
   
 #### A complete game
   
-  gameTurn loops over all the players that have the stillPlaying flag set to run
+  `gameTurn` loops over all the players that have the `stillPlaying` flag set to run
 the player turn.
-  gameOver checks if all the players have stillPlaying set, and returns True if so.
-completeGame is implemented as descirbed in the instructions.
-  completeGame is implemented as descirbed in the instructions.
+  `gameOver` checks if all the players have `stillPlaying` set, and returns True if so.
+`completeGame` is implemented as descirbed in the instructions.
+  `completeGame` is implemented as descirbed in the instructions.
   
 #### Main program
   
-  main.py follows the classic if __name__ == “__main__” format.
-  main prompts for and initialises the required variables, before calling completeGame
+  _main.py_ follows the classic if __name__ == “__main__” format.
+  `main` prompts for and initialises the required variables, before calling `completeGame`
 in a while-loop the break condition of which is prompted to the player, asking if they
 want to replay.
   
 #### Bets
   
-  Bets are integrated into initPlayers. It is an array in order to be able to modify
-it from playerAction.
+  Bets are integrated into `initPlayers`. It is an array in order to be able to modify
+it from `playerAction`.
   
 #### The croupier
   
   In order to more closely follow the standard blackjack rules, the croupier was not
 coded to play like a normal player, but instead to play at the end of the game.
-  They still draw the up and down card at the beginning in their own firstTurn.
-  The croupier’s equivalent of gameTurn is play, which shows the down card and
+  They still draw the up and down card at the beginning in their own `firstTurn`.
+  The croupier’s equivalent of `gameTurn` is play, which shows the down card and
 draws until they reach a hard seventeen.
   
 #### The other players
@@ -125,16 +125,16 @@ order to not disturb the GUI development.
   
   #### The GUI
   
-  To generate a GUI, we used Tcl/Tk through the tkinter module. The generateGUI
+  To generate a GUI, we used `Tcl/Tk` through the `tkinter` module. The `generateGUI`
 function creates a Tk instance that is set up to have labels for player information,
 a canvas as the casino table, and buttons for the player actions.
-  Because of the interrupt based nature of Tcl/Tk, the program needs multithread-
+  Because of the interrupt based nature of `Tcl/Tk`, the program needs multithread-
 ing to have neither the GUI, nor the game halted. The GUI runs on the main thread,
 and main creates a parallel daemon thread for the game logic, that is killed when
 the main window is closed.
-  For player input, we used dialog windows with a textual input, always called dlg
+  For player input, we used dialog windows with a textual input, always called `dlg`
 (short for dialog).
-  When the --no-gui command line argument is set, main.py imports the -no-gui
+  When the _--no-gui_ command line argument is set, _main.py_ imports the no-gui
 versions of some files instread of the latter.
   The image files used for the GUI (included in Card Files) are imported using
 pillow in order to resize them as needed.
