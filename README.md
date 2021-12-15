@@ -125,10 +125,10 @@ order to not disturb the GUI development.
   
   #### The GUI
   
-  To generate a GUI, we used `Tcl/Tk` through the `tkinter` module. The `generateGUI`
+  To generate a GUI, we used Tcl/Tk through the `tkinter` module. The `generateGUI`
 function creates a Tk instance that is set up to have labels for player information,
 a canvas as the casino table, and buttons for the player actions.
-  Because of the interrupt based nature of `Tcl/Tk`, the program needs multithread-
+  Because of the interrupt based nature of Tcl/Tk, the program needs multithread-
 ing to have neither the GUI, nor the game halted. The GUI runs on the main thread,
 and main creates a parallel daemon thread for the game logic, that is killed when
 the main window is closed.
